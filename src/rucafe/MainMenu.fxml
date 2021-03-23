@@ -19,24 +19,24 @@
                <graphic>
                   <ImageView fitHeight="135.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/donutIcon.jpg" />
+                        <Image url="file:/Users/toshan/Documents/Rutgers/Spring%202021/Software%20Meth/Project%204/Project4/images/donutIcon.jpg" />
                      </image>
                   </ImageView>
                </graphic></Button>
             <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="219.0" layoutY="83.0" mnemonicParsing="false" prefHeight="171.0" prefWidth="163.0" text="Order Coffee" wrapText="true">
                <graphic>
-                  <ImageView fitHeight="135" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView blendMode="SRC_ATOP" fitHeight="135" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/coffeeIcon.jpg" />
+                        <Image url="file:/Users/toshan/Documents/Rutgers/Spring%202021/Software%20Meth/Project%204/Project4/images/coffeeIcon.jpg" />
                      </image></ImageView>
                </graphic>
             </Button>
-            <Text fill="#f83838" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO RU CAFE" wrappingWidth="242.96680450439453">
+            <Text fill="#f83838" layoutX="69.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO RU CAFE" textAlignment="CENTER" wrappingWidth="300.0">
                <font>
-                  <Font name="Footlight MT Light" size="24.0" />
+                  <Font name="Serif Bold" size="24.0" />
                </font>
             </Text>
-            <Button contentDisplay="TOP" layoutX="69.0" layoutY="289.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="274.0" text="CHECKOUT" wrapText="true" />
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="69.0" layoutY="289.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="274.0" text="CHECKOUT" textAlignment="CENTER" wrapText="true" />
          </children>
       </Pane>
    </children>
