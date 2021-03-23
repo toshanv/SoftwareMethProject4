@@ -19,7 +19,7 @@
                <graphic>
                   <ImageView fitHeight="135.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/Users/toshan/Documents/Rutgers/Spring%202021/Software%20Meth/Project%204/Project4/images/donutIcon.jpg" />
+                        <Image url="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f73eb5d4-421b-48e6-852f-6d533dedc0de/donutIcon.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210323%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20210323T225156Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=844f0299804dde3f5a74789cd19c4eabc12ac977fa3d9bc76ff40b46cabf74ed&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22donutIcon.jpg%22" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -27,8 +27,9 @@
                <graphic>
                   <ImageView blendMode="SRC_ATOP" fitHeight="135" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/Users/toshan/Documents/Rutgers/Spring%202021/Software%20Meth/Project%204/Project4/images/coffeeIcon.jpg" />
-                     </image></ImageView>
+                        <Image url="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a2718e5a-1058-466d-800c-4eb84ca8489c/coffeeIcon.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210323%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20210323T225017Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=32da1390e45227c3f27984185ac124f70a28624725127bd5ad8d863b274ba8c8&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22coffeeIcon.jpg%22" />
+                     </image>
+                  </ImageView>
                </graphic>
             </Button>
             <Text fill="#f83838" layoutX="69.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO RU CAFE" textAlignment="CENTER" wrappingWidth="300.0">
