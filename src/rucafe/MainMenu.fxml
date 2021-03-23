@@ -32,7 +32,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Text fill="#f83838" layoutX="69.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO RU CAFE" textAlignment="CENTER" wrappingWidth="300.0">
+            <Text fill="#f83838" layoutX="56.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO RU CAFE" textAlignment="CENTER" wrappingWidth="300.0">
                <font>
                   <Font name="Serif Bold" size="24.0" />
                </font>
