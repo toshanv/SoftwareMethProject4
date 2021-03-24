@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class MainMenuController {
     public void handleClickOrderDonuts(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader;
+            FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("Donut.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -24,4 +26,5 @@ public class MainMenuController {
             System.out.print("Can't Load New Window");
         }
     }
+
 }
