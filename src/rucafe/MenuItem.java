@@ -1,4 +1,5 @@
 package rucafe;
 
-public class MenuItem {
+abstract class MenuItem {
+    abstract double itemPrice();
 }
