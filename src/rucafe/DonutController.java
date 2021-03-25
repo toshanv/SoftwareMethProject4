@@ -81,6 +81,11 @@ public class DonutController {
             sendWarning("Please Select A Flavor.");
         }
 
+        // THIS IS WHERE WE CREATE DONUT OBJ
+        String typeOfDonut = donutSelection.getValue().toString();
+        String flavorOfDonut = flavorDonuts.getSelectionModel().getSelectedItem().toString();
+        String quantityOfDonut = quantityText.getText();
+
         donutOrders.add(flavorDonuts.getSelectionModel().getSelectedItem().toString() + "(" + quantityText.getText() + ')');
         donutOrderList.setItems(donutOrders);
         resetDonutMenu();
