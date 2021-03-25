@@ -19,27 +19,43 @@
       </ImageView>
 
       <ComboBox fx:id="donutSelection" layoutX="14.0" layoutY="314.0" onAction="#setFlavors" prefWidth="150.0" />
-      <TextField fx:id="quantityText" editable="false" layoutX="361.0" layoutY="235.0" prefHeight="27.0" prefWidth="50.0" />
-      <Button layoutX="347.0" layoutY="270.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
-      <Button layoutX="397.0" layoutY="270.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
-      <Button layoutX="369.0" layoutY="381.0" mnemonicParsing="false" text="&lt;&lt;" />
-      <Button layoutX="369.0" layoutY="341.0" mnemonicParsing="false" onAction="#insertToOrder" text="&gt;&gt;" />
-      <TextField editable="false" layoutX="263.0" layoutY="444.0" prefHeight="27.0" prefWidth="122.0" />
-      <Text layoutX="184.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:">
+      <TextField fx:id="quantityText" editable="false" layoutX="380.0" layoutY="235.0" prefHeight="27.0" prefWidth="49.0" />
+      <Button layoutX="337.0" layoutY="271.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
+      <Button layoutX="390.0" layoutY="271.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
+      <Button layoutX="360.0" layoutY="389.0" mnemonicParsing="false" text="&lt;&lt;" />
+      <Button layoutX="360.0" layoutY="349.0" mnemonicParsing="false" onAction="#insertToOrder" text="&gt;&gt;" />
+      <TextField editable="false" layoutX="276.0" layoutY="444.0" prefHeight="27.0" prefWidth="122.0" />
+      <Text layoutX="185.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:" wrappingWidth="79.5185546875">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="436.0" layoutY="444.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="add to order" />
-      <ScrollPane layoutX="205.0" layoutY="227.0" prefHeight="200.0" prefWidth="138.0">
+      <Button layoutX="430.0" layoutY="444.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="add to order" />
+      <ScrollPane layoutX="182.0" layoutY="227.0" prefHeight="200.0" prefWidth="138.0">
          <content>
             <ListView fx:id="flavorDonuts" prefHeight="200.0" prefWidth="150.0" />
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="436.0" layoutY="227.0" prefHeight="200.0" prefWidth="138.0">
+      <ScrollPane layoutX="438.0" layoutY="227.0" prefHeight="200.0" prefWidth="138.0">
         <content>
            <ListView fx:id="donutOrderList" layoutX="-32.0" prefHeight="200.0" prefWidth="135.0" />
         </content>
       </ScrollPane>
+      <Text layoutX="327.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:" />
+      <Text layoutX="14.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Type:" wrappingWidth="150.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="182.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Flavor:" wrappingWidth="138.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="438.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Cart:" wrappingWidth="138.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
