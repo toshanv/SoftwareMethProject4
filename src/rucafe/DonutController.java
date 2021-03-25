@@ -22,6 +22,7 @@ public class DonutController {
     ObservableList<String> donutOrders =  FXCollections.observableArrayList();
 
     public void initialize() {
+        // TODO: set a default donut type to avoid exception
         ObservableList<String> donutTypes = FXCollections.observableArrayList("Yeast Donut", "Cake Donut", "Donut Holes");
         donutSelection.setItems(donutTypes);
         quantityText.setText("1");
