@@ -51,8 +51,8 @@ public class Coffee extends MenuItem implements Customizable {
     }
 
     /**
-     * Calculates the price of the current
-     * @return
+     * Calculates the price of the current coffee object
+     * @return price of coffee
      */
     @Override
     public double itemPrice() {
