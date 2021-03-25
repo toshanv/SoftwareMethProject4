@@ -12,10 +12,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-
-        // TODO: wtf is this line
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Ru Cafe Main Menu");
+        // TODO: replace magic numbers
         primaryStage.setScene(new Scene(root, 450, 400));
         primaryStage.show();
     }
