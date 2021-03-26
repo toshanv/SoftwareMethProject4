@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DonutController {
@@ -21,12 +22,15 @@ public class DonutController {
     @FXML
     public ListView donutOrderList;
 
-    ObservableList<String> donutOrders =  FXCollections.observableArrayList();
+    @FXML
+    public TextField subtotalText;
 
-    // TODO: clear the cart when closing the donut menu
+    DonutCart cart;
 
     public void initialize() {
         // TODO: set a default donut type to avoid exception
+        cart = new DonutCart();
+
         ArrayList<String> donutTypesList = new ArrayList<>();
         for (DONUT_TYPE type : DONUT_TYPE.values()) {
             donutTypesList.add(type.getName());
@@ -77,6 +81,19 @@ public class DonutController {
         }
     }
 
+    private void setSubtotalText() {
+        double subtotal = cart.getTotalPrice();
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
+        df.setMinimumFractionDigits(2);
+
+        String subtotalString = df.format(subtotal);
+
+        subtotalText.setText("$" + subtotalString);
+    }
+
     public void resetDonutMenu() {
         flavorDonuts.setItems(null);
         donutSelection.setValue("");
@@ -84,6 +101,7 @@ public class DonutController {
     }
 
     public void insertToCart(ActionEvent actionEvent) {
+        // error checks
         if (flavorDonuts.getSelectionModel().getSelectedItem() == null && (donutSelection.getValue() == null || donutSelection.getValue().equals(""))) {
             sendWarning("Please select a donut and a flavor for the donut.");
             return;
@@ -92,6 +110,7 @@ public class DonutController {
             return;
         }
 
+        // get the type of donut
         DONUT_TYPE typeOfDonut = null;
         for (DONUT_TYPE type : DONUT_TYPE.values()) {
             if (type.getName().equals(donutSelection.getValue().toString())) {
@@ -99,25 +118,31 @@ public class DonutController {
             }
         }
 
+        // get the flavor of the donut
         String flavorOfDonut = flavorDonuts.getSelectionModel().getSelectedItem().toString();
+
+        // get the quantity of the donut
         int quantityOfDonut = Integer.parseInt(quantityText.getText());
 
+        // create the donut object
         Donut donutToAdd = new Donut(quantityOfDonut, typeOfDonut, flavorOfDonut);
-        donutToAdd.add(donutToAdd);
 
-        // donutOrders.add(flavorDonuts.getSelectionModel().getSelectedItem().toString() + "(" + quantityText.getText() + ')');
-        // donutOrderList.setItems(donutOrders);
+        // add the donut to the cart
+        cart.addToCart(donutToAdd);
 
-        ObservableList<String> cartString = FXCollections.observableArrayList(donutToAdd.cartToString());
+        // get the cart as a string to display
+        ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToString());
         donutOrderList.setItems(cartString);
+
+        setSubtotalText();
 
         resetDonutMenu();
         return;
     }
 
     public void removeFromCart(ActionEvent actionEvent) {
-        // check that something is selected
-        if (Donut.cart.size() == 0) {
+        // error checks
+        if (this.cart.getSize() == 0) {
             sendWarning("The cart is empty, nothing to remove.");
             return;
         } else if (donutOrderList.getSelectionModel().getSelectedItem() == null) {
@@ -125,12 +150,17 @@ public class DonutController {
             return;
         }
 
-        // create donut object using the string
-        Donut toRemove = Donut.cart.get((int)donutOrderList.getSelectionModel().getSelectedIndices().get(0));
-        toRemove.remove(toRemove);
+        // create donut object using the selected donut in the cart
+        Donut toRemove = this.cart.getDonut((int)donutOrderList.getSelectionModel().getSelectedIndices().get(0));
 
-        ObservableList<String> cartString = FXCollections.observableArrayList(toRemove.cartToString());
+        // remove the donut
+        this.cart.removeFromCart(toRemove);
+
+        // get the cart as a string to display
+        ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToString());
         donutOrderList.setItems(cartString);
+
+        setSubtotalText();
 
         resetDonutMenu();
         return;
