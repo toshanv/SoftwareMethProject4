@@ -7,23 +7,23 @@
 
 <AnchorPane prefHeight="497.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rucafe.DonutController">
    <children>
-      <Text fill="#da0606" layoutX="239.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Menu">
+      <Text fill="#da0606" layoutX="234.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Menu">
          <font>
             <Font name="Serif Regular" size="24.0" />
          </font>
       </Text>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="220.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="https://cdn2.iconfinder.com/data/icons/bakery-24/100/Donut1-512.png" />
          </image>
       </ImageView>
 
-      <ComboBox fx:id="donutSelection" layoutX="14.0" layoutY="314.0" onAction="#setFlavors" prefWidth="150.0" />
-      <TextField fx:id="quantityText" editable="false" layoutX="380.0" layoutY="235.0" prefHeight="27.0" prefWidth="49.0" />
-      <Button layoutX="337.0" layoutY="271.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
-      <Button layoutX="390.0" layoutY="271.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
-      <Button layoutX="360.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeFromCart" text="&lt;&lt;" />
-      <Button layoutX="360.0" layoutY="349.0" mnemonicParsing="false" onAction="#insertToCart" text="&gt;&gt;" />
+      <ComboBox fx:id="donutSelection" layoutX="9.0" layoutY="314.0" onAction="#setFlavors" prefHeight="27.0" prefWidth="100.0" />
+      <TextField fx:id="quantityText" editable="false" layoutX="322.0" layoutY="242.0" prefHeight="27.0" prefWidth="60.0" />
+      <Button layoutX="312.0" layoutY="276.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
+      <Button layoutX="365.0" layoutY="276.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
+      <Button layoutX="335.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeFromCart" text="&lt;&lt;" />
+      <Button layoutX="335.0" layoutY="349.0" mnemonicParsing="false" onAction="#insertToCart" text="&gt;&gt;" />
       <TextField editable="false" layoutX="276.0" layoutY="444.0" prefHeight="27.0" prefWidth="122.0" />
       <Text layoutX="185.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:" wrappingWidth="79.5185546875">
          <font>
@@ -31,28 +31,28 @@
          </font>
       </Text>
       <Button layoutX="430.0" layoutY="444.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="add to order" />
-      <ScrollPane layoutX="182.0" layoutY="227.0" prefHeight="200.0" prefWidth="138.0">
+      <ScrollPane layoutX="120.0" layoutY="227.0" prefHeight="200.0" prefWidth="175.0">
          <content>
             <ListView fx:id="flavorDonuts" prefHeight="200.0" prefWidth="150.0" />
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="438.0" layoutY="227.0" prefHeight="200.0" prefWidth="138.0">
+      <ScrollPane layoutX="411.0" layoutY="227.0" prefHeight="200.0" prefWidth="175.0">
         <content>
-           <ListView fx:id="donutOrderList" layoutX="-32.0" prefHeight="200.0" prefWidth="135.0" />
+           <ListView fx:id="donutOrderList" layoutX="-32.0" prefHeight="200.0" prefWidth="155.0" />
         </content>
       </ScrollPane>
-      <Text layoutX="327.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:" />
-      <Text layoutX="14.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Type:" wrappingWidth="150.0">
+      <Text layoutX="326.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:" />
+      <Text layoutX="9.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Type:" wrappingWidth="79.5185546875">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="182.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Flavor:" wrappingWidth="138.0">
+      <Text layoutX="120.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Flavor:" wrappingWidth="138.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="438.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Cart:" wrappingWidth="138.0">
+      <Text layoutX="411.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Cart:" wrappingWidth="138.0">
          <font>
             <Font size="15.0" />
          </font>

@@ -7,10 +7,10 @@ public class Donut extends MenuItem implements Customizable {
     public static ArrayList<Donut> cart = new ArrayList<>();
 
     private int count;
-    private Constants.DONUT_TYPE donutType;
+    private DONUT_TYPE donutType;
     private String donutFlavor;
 
-    public Donut(int count, Constants.DONUT_TYPE donutType, String donutFlavor) {
+    public Donut(int count, DONUT_TYPE donutType, String donutFlavor) {
         this.count = count;
         this.donutType = donutType;
         this.donutFlavor = donutFlavor;

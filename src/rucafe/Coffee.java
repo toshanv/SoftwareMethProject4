@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Coffee extends MenuItem implements Customizable {
 
     // TODO: should this be final?
-    private final ArrayList<Constants.ADDINS> currAddIns;
-    private Constants.COFFEE_SIZE size;
+    private final ArrayList<ADDINS> currAddIns;
+    private COFFEE_SIZE size;
     private int count;
 
     /**
@@ -14,7 +14,7 @@ public class Coffee extends MenuItem implements Customizable {
      */
     public Coffee() {
         // initialize the coffee object with no add-ins or size
-        this.currAddIns = new ArrayList<Constants.ADDINS>();
+        this.currAddIns = new ArrayList<ADDINS>();
         this.size = null;
         this.count = 0;
     }
@@ -23,7 +23,7 @@ public class Coffee extends MenuItem implements Customizable {
      * Setter to set the size of the coffee object
      * @param size object that the user wants
      */
-    public void setSize(Constants.COFFEE_SIZE size) {
+    public void setSize(COFFEE_SIZE size) {
         this.size = size;
     }
 
@@ -43,9 +43,9 @@ public class Coffee extends MenuItem implements Customizable {
     @Override
     public boolean add(Object obj) {
         boolean addedSuccessfully;
-        if (obj instanceof Constants.ADDINS) {
+        if (obj instanceof ADDINS) {
             // cast obj to ADDINS object
-            Constants.ADDINS toAdd = (Constants.ADDINS) obj;
+            ADDINS toAdd = (ADDINS) obj;
 
             // TODO: do we need to check if its already in the list? i dont think its possible that we will try to add something thats already in it
 
@@ -67,9 +67,9 @@ public class Coffee extends MenuItem implements Customizable {
     @Override
     public boolean remove(Object obj) {
         boolean removedSuccessfully;
-        if (obj instanceof Constants.ADDINS) {
+        if (obj instanceof ADDINS) {
             // cast obj to ADDINS object
-            Constants.ADDINS toRemove = (Constants.ADDINS) obj;
+            ADDINS toRemove = (ADDINS) obj;
 
             removedSuccessfully = this.currAddIns.remove(toRemove);
         } else {

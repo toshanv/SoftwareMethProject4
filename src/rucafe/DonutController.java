@@ -23,13 +23,12 @@ public class DonutController {
 
     ObservableList<String> donutOrders =  FXCollections.observableArrayList();
 
-    // TODO: should closing the donut controller clear the cart?
+    // TODO: clear the cart when closing the donut menu
 
-    // TODO: do all these functions need @FXML tags?
     public void initialize() {
         // TODO: set a default donut type to avoid exception
         ArrayList<String> donutTypesList = new ArrayList<>();
-        for (Constants.DONUT_TYPE type : Constants.DONUT_TYPE.values()) {
+        for (DONUT_TYPE type : DONUT_TYPE.values()) {
             donutTypesList.add(type.getName());
         }
         ObservableList<String> donutTypes = FXCollections.observableArrayList(donutTypesList);
@@ -65,13 +64,13 @@ public class DonutController {
 
     public void setFlavors(ActionEvent actionEvent) {
         if  (donutSelection.getValue().toString().equals("Yeast Donut")) {
-            ObservableList<String> yeastTypes = FXCollections.observableArrayList(Constants.DONUT_TYPE.YEAST.getFlavors());
+            ObservableList<String> yeastTypes = FXCollections.observableArrayList(DONUT_TYPE.YEAST.getFlavors());
             flavorDonuts.setItems(yeastTypes);
         } else if (donutSelection.getValue().toString().equals("Cake Donut")) {
-            ObservableList<String> cakeTypes = FXCollections.observableArrayList(Constants.DONUT_TYPE.CAKE.getFlavors());
+            ObservableList<String> cakeTypes = FXCollections.observableArrayList(DONUT_TYPE.CAKE.getFlavors());
             flavorDonuts.setItems(cakeTypes);
         } else if (donutSelection.getValue().toString().equals("Donut Holes")) {
-            ObservableList<String> holeTypes = FXCollections.observableArrayList(Constants.DONUT_TYPE.HOLE.getFlavors());
+            ObservableList<String> holeTypes = FXCollections.observableArrayList(DONUT_TYPE.HOLE.getFlavors());
             flavorDonuts.setItems(holeTypes);
         } else {
             flavorDonuts.setItems(null);
@@ -93,8 +92,8 @@ public class DonutController {
             return;
         }
 
-        Constants.DONUT_TYPE typeOfDonut = null;
-        for (Constants.DONUT_TYPE type : Constants.DONUT_TYPE.values()) {
+        DONUT_TYPE typeOfDonut = null;
+        for (DONUT_TYPE type : DONUT_TYPE.values()) {
             if (type.getName().equals(donutSelection.getValue().toString())) {
                 typeOfDonut = type;
             }
