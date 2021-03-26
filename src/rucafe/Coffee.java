@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Coffee extends MenuItem implements Customizable {
 
     private final ArrayList<Constants.ADDINS> currAddIns;
-    private Constants.COFFEE_SIZES size;
+    private Constants.COFFEE_SIZE size;
 
     /**
      * Coffee constructor that initialize the coffee object
@@ -16,6 +16,19 @@ public class Coffee extends MenuItem implements Customizable {
         size = null;
     }
 
+    /**
+     * Setter to set the size of the coffee object
+     * @param size object that the user wants
+     */
+    public void setSize(Constants.COFFEE_SIZE size) {
+        this.size = size;
+    }
+
+    /**
+     * Adds a new add-in to the coffee object
+     * @param obj of add-in to be added to the coffee
+     * @return true if successfully added, false if not added
+     */
     @Override
     public boolean add(Object obj) {
         boolean addedSuccessfully;
@@ -35,6 +48,11 @@ public class Coffee extends MenuItem implements Customizable {
         return addedSuccessfully;
     }
 
+    /**
+     * Removes add-in from the coffee object
+     * @param obj of add-in to be removed from the coffee
+     * @return true if successfully removed, false if not removed
+     */
     @Override
     public boolean remove(Object obj) {
         boolean removedSuccessfully;

@@ -13,14 +13,14 @@ public class Constants {
     /**
      * Coffee Size enum
      */
-    public static enum COFFEE_SIZES {
+    public static enum COFFEE_SIZE {
         SHORT(COFFEE_SHORT_PRICE),
         TALL(COFFEE_TALL_PRICE),
         GRANDE(COFFEE_GRANDE_PRICE),
         VENTI(COFFEE_VENTI_PRICE);
 
         private final double cost;
-        COFFEE_SIZES(double cost) {
+        COFFEE_SIZE(double cost) {
             this.cost = cost;
         }
 
