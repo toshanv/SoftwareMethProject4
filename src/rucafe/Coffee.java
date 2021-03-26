@@ -7,6 +7,7 @@ public class Coffee extends MenuItem implements Customizable {
     // TODO: should this be final?
     private final ArrayList<Constants.ADDINS> currAddIns;
     private Constants.COFFEE_SIZE size;
+    private int count;
 
     /**
      * Coffee constructor that initialize the coffee object
@@ -15,6 +16,7 @@ public class Coffee extends MenuItem implements Customizable {
         // initialize the coffee object with no add-ins or size
         this.currAddIns = new ArrayList<Constants.ADDINS>();
         this.size = null;
+        this.count = 0;
     }
 
     /**
@@ -23,6 +25,14 @@ public class Coffee extends MenuItem implements Customizable {
      */
     public void setSize(Constants.COFFEE_SIZE size) {
         this.size = size;
+    }
+
+    /**
+     * Setter to set the count of the coffee
+     * @param count number of coffee's the user wants
+     */
+    public void setCount(int count) {
+        this.count = count;
     }
 
     /**
@@ -81,6 +91,6 @@ public class Coffee extends MenuItem implements Customizable {
         }
 
         // calculate and return the price of the coffee
-        return this.size.getPrice() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE);
+        return (this.size.getPrice() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE)) * this.count;
     }
 }
