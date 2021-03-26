@@ -134,6 +134,7 @@ public class DonutController {
         ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToString());
         donutOrderList.setItems(cartString);
 
+        // calculate and display subtotal
         setSubtotalText();
 
         resetDonutMenu();
@@ -160,6 +161,7 @@ public class DonutController {
         ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToString());
         donutOrderList.setItems(cartString);
 
+        // calculate and display subtotal
         setSubtotalText();
 
         resetDonutMenu();
