@@ -80,6 +80,6 @@ public class Coffee extends MenuItem implements Customizable {
         }
 
         // calculate and return the price of the coffee
-        return this.size.getCost() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE);
+        return this.size.getPrice() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE);
     }
 }
