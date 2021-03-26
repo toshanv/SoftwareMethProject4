@@ -14,6 +14,9 @@ public class Constants {
     private static final double DONUT_YEAST_PRICE = 1.39;
     private static final double DONUT_CAKE_PRICE = 1.59;
     private static final double DONUT_HOLE_PRICE = 0.33;
+    private static final String YEAST_DONUT_NAME = "Yeast Donut";
+    private static final String CAKE_DONUT_NAME = "Cake Donut";
+    private static final String DONUT_HOLES_NAME = "Donut Holes";
     private static final String[] DONUT_YEAST_FLAVORS = {"Jelly Filled", "Glaze", "Chocolate Frosted", "Lemon Filled"};
     private static final String[] DONUT_CAKE_FLAVORS = {"Old Fashion", "Blueberry", "Cinnamon Sugar"};
     private static final String[] DONUT_HOLE_FLAVORS = {"Cinnamon Sugar Holes", "Blueberry holes", "Jelly Holes"};
@@ -61,10 +64,11 @@ public class Constants {
      * Donut Type enum
      */
     public static enum DONUT_TYPE {
-        YEAST(DONUT_YEAST_PRICE, DONUT_YEAST_FLAVORS),
-        CAKE(DONUT_CAKE_PRICE, DONUT_CAKE_FLAVORS),
-        HOLE(DONUT_HOLE_PRICE, DONUT_HOLE_FLAVORS);
+        YEAST(YEAST_DONUT_NAME, DONUT_YEAST_PRICE, DONUT_YEAST_FLAVORS),
+        CAKE(CAKE_DONUT_NAME, DONUT_CAKE_PRICE, DONUT_CAKE_FLAVORS),
+        HOLE(DONUT_HOLES_NAME, DONUT_HOLE_PRICE, DONUT_HOLE_FLAVORS);
 
+        private final String name;
         private final double price;
         private final String[] flavors;
 
@@ -73,9 +77,18 @@ public class Constants {
          * @param price of the donut
          * @param flavors for the donut
          */
-        DONUT_TYPE(double price, String[] flavors) {
+        DONUT_TYPE(String name, double price, String[] flavors) {
+            this.name = name;
             this.price = price;
             this.flavors = flavors;
+        }
+
+        /**
+         * Getter for the name of the donut
+         * @return name of the donut based on type
+         */
+        public String getName() {
+            return this.name;
         }
 
         /**

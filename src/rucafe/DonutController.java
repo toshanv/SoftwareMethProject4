@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+
 public class DonutController {
     @FXML
     public TextField quantityText;
@@ -21,16 +23,22 @@ public class DonutController {
 
     ObservableList<String> donutOrders =  FXCollections.observableArrayList();
 
+    // TODO: do all these functions need @FXML tags?
     public void initialize() {
         // TODO: set a default donut type to avoid exception
-        ObservableList<String> donutTypes = FXCollections.observableArrayList("Yeast Donut", "Cake Donut", "Donut Holes");
+        ArrayList<String> donutTypesList = new ArrayList<>();
+        for (Constants.DONUT_TYPE type : Constants.DONUT_TYPE.values()) {
+            donutTypesList.add(type.getName());
+        }
+        ObservableList<String> donutTypes = FXCollections.observableArrayList(donutTypesList);
         donutSelection.setItems(donutTypes);
+
         quantityText.setText("1");
     }
 
     public void incrementQuantity(ActionEvent actionEvent) {
         int incrementValue = Integer.parseInt(quantityText.getText());
-        incrementValue ++;
+        incrementValue++;
         quantityText.setText(String.valueOf(incrementValue));
     }
 
@@ -41,7 +49,7 @@ public class DonutController {
             sendWarning("Cannot choose a quantity less than 1 to add to order.");
             return;
         }
-        decrementValue --;
+        decrementValue--;
         quantityText.setText(String.valueOf(decrementValue));
     }
 
@@ -55,13 +63,13 @@ public class DonutController {
 
     public void setFlavors(ActionEvent actionEvent) {
         if  (donutSelection.getValue().toString().equals("Yeast Donut")) {
-            ObservableList<String> yeastTypes = FXCollections.observableArrayList("Jelly Filled", "Glaze", "Chocolate Frosted", "Lemon Filled");
+            ObservableList<String> yeastTypes = FXCollections.observableArrayList(Constants.DONUT_TYPE.YEAST.getFlavors());
             flavorDonuts.setItems(yeastTypes);
         } else if (donutSelection.getValue().toString().equals("Cake Donut")) {
-            ObservableList<String> cakeTypes = FXCollections.observableArrayList("Old Fashion", "Blueberry", "Cinnamon Sugar");
+            ObservableList<String> cakeTypes = FXCollections.observableArrayList(Constants.DONUT_TYPE.CAKE.getFlavors());
             flavorDonuts.setItems(cakeTypes);
         } else if (donutSelection.getValue().toString().equals("Donut Holes")) {
-            ObservableList<String> holeTypes = FXCollections.observableArrayList("Cinnamon Sugar Holes", "Blueberry holes", "Jelly Holes");
+            ObservableList<String> holeTypes = FXCollections.observableArrayList(Constants.DONUT_TYPE.HOLE.getFlavors());
             flavorDonuts.setItems(holeTypes);
         } else {
             flavorDonuts.setItems(null);
