@@ -91,6 +91,17 @@ public class Constants {
             return this.name;
         }
 
+//        // TODO: javadoc comments
+//        public DONUT_TYPE getType(String name) {
+//            for (DONUT_TYPE type : DONUT_TYPE.values()) {
+//                if (type.getName().equals(name)) {
+//                    return type;
+//                }
+//            }
+//
+//            return null;
+//        }
+
         /**
          * Getter for price of the donut
          * @return price of donut based on type

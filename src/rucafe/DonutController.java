@@ -23,6 +23,8 @@ public class DonutController {
 
     ObservableList<String> donutOrders =  FXCollections.observableArrayList();
 
+    // TODO: should closing the donut controller clear the cart?
+
     // TODO: do all these functions need @FXML tags?
     public void initialize() {
         // TODO: set a default donut type to avoid exception
@@ -82,21 +84,55 @@ public class DonutController {
         quantityText.setText("1");
     }
 
-    public void insertToOrder(ActionEvent actionEvent) {
+    public void insertToCart(ActionEvent actionEvent) {
         if (flavorDonuts.getSelectionModel().getSelectedItem() == null && (donutSelection.getValue() == null || donutSelection.getValue().equals(""))) {
             sendWarning("Please select a donut and a flavor for the donut.");
             return;
         } else if (flavorDonuts.getSelectionModel().getSelectedItem() == null) {
             sendWarning("Please Select A Flavor.");
+            return;
         }
 
-        // THIS IS WHERE WE CREATE DONUT OBJ
-        String typeOfDonut = donutSelection.getValue().toString();
-        String flavorOfDonut = flavorDonuts.getSelectionModel().getSelectedItem().toString();
-        String quantityOfDonut = quantityText.getText();
+        Constants.DONUT_TYPE typeOfDonut = null;
+        for (Constants.DONUT_TYPE type : Constants.DONUT_TYPE.values()) {
+            if (type.getName().equals(donutSelection.getValue().toString())) {
+                typeOfDonut = type;
+            }
+        }
 
-        donutOrders.add(flavorDonuts.getSelectionModel().getSelectedItem().toString() + "(" + quantityText.getText() + ')');
-        donutOrderList.setItems(donutOrders);
+        String flavorOfDonut = flavorDonuts.getSelectionModel().getSelectedItem().toString();
+        int quantityOfDonut = Integer.parseInt(quantityText.getText());
+
+        Donut donutToAdd = new Donut(quantityOfDonut, typeOfDonut, flavorOfDonut);
+        donutToAdd.add(donutToAdd);
+
+        // donutOrders.add(flavorDonuts.getSelectionModel().getSelectedItem().toString() + "(" + quantityText.getText() + ')');
+        // donutOrderList.setItems(donutOrders);
+
+        ObservableList<String> cartString = FXCollections.observableArrayList(donutToAdd.cartToString());
+        donutOrderList.setItems(cartString);
+
+        resetDonutMenu();
+        return;
+    }
+
+    public void removeFromCart(ActionEvent actionEvent) {
+        // check that something is selected
+        if (Donut.cart.size() == 0) {
+            sendWarning("The cart is empty, nothing to remove.");
+            return;
+        } else if (donutOrderList.getSelectionModel().getSelectedItem() == null) {
+            sendWarning("Please select a donut to remove from the cart.");
+            return;
+        }
+
+        // create donut object using the string
+        Donut toRemove = Donut.cart.get((int)donutOrderList.getSelectionModel().getSelectedIndices().get(0));
+        toRemove.remove(toRemove);
+
+        ObservableList<String> cartString = FXCollections.observableArrayList(toRemove.cartToString());
+        donutOrderList.setItems(cartString);
+
         resetDonutMenu();
         return;
     }

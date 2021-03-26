@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Coffee extends MenuItem implements Customizable {
 
+    // TODO: should this be final?
     private final ArrayList<Constants.ADDINS> currAddIns;
     private Constants.COFFEE_SIZE size;
 
@@ -12,8 +13,8 @@ public class Coffee extends MenuItem implements Customizable {
      */
     public Coffee() {
         // initialize the coffee object with no add-ins or size
-        currAddIns = new ArrayList<Constants.ADDINS>();
-        size = null;
+        this.currAddIns = new ArrayList<Constants.ADDINS>();
+        this.size = null;
     }
 
     /**

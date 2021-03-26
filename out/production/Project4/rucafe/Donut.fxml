@@ -22,8 +22,8 @@
       <TextField fx:id="quantityText" editable="false" layoutX="380.0" layoutY="235.0" prefHeight="27.0" prefWidth="49.0" />
       <Button layoutX="337.0" layoutY="271.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
       <Button layoutX="390.0" layoutY="271.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
-      <Button layoutX="360.0" layoutY="389.0" mnemonicParsing="false" text="&lt;&lt;" />
-      <Button layoutX="360.0" layoutY="349.0" mnemonicParsing="false" onAction="#insertToOrder" text="&gt;&gt;" />
+      <Button layoutX="360.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeFromCart" text="&lt;&lt;" />
+      <Button layoutX="360.0" layoutY="349.0" mnemonicParsing="false" onAction="#insertToCart" text="&gt;&gt;" />
       <TextField editable="false" layoutX="276.0" layoutY="444.0" prefHeight="27.0" prefWidth="122.0" />
       <Text layoutX="185.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:" wrappingWidth="79.5185546875">
          <font>
