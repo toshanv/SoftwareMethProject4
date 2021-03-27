@@ -35,6 +35,7 @@ public class DonutController {
         for (DONUT_TYPE type : DONUT_TYPE.values()) {
             donutTypesList.add(type.getName());
         }
+
         ObservableList<String> donutTypes = FXCollections.observableArrayList(donutTypesList);
         donutSelection.setItems(donutTypes);
 
@@ -54,6 +55,7 @@ public class DonutController {
             sendWarning("Cannot choose a quantity less than 1 to add to order.");
             return;
         }
+
         decrementValue--;
         quantityText.setText(String.valueOf(decrementValue));
     }

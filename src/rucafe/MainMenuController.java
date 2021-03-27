@@ -10,6 +10,9 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class MainMenuController {
+
+    // TODO: initialize orders and store orders here
+
     public void handleClickOrderDonuts(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader;
