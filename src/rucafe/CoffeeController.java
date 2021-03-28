@@ -4,11 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CoffeeController {
@@ -33,8 +32,16 @@ public class CoffeeController {
     @FXML
     public CheckBox whippedcreamAddIn;
 
-    public void initialize() {
+    @FXML
+    public TextField subtotalText;
 
+    @FXML
+    public Button addToOrder;
+
+    Coffee coffee;
+
+    public void initialize() {
+        // loop through size enum and populate the drop down with the string names
         ArrayList<String> coffeeSizeList = new ArrayList<>();
         for (COFFEE_SIZE type : COFFEE_SIZE.values()) {
             coffeeSizeList.add(type.getName());
@@ -43,15 +50,28 @@ public class CoffeeController {
         ObservableList<String> coffeeSizes = FXCollections.observableArrayList(coffeeSizeList);
         sizeList.setItems(coffeeSizes);
 
+        // set initial quantity to 1
         quantityText.setText("1");
 
-        // TODO: INITIALIZE SUBTOTAL HERE TO DISPLAY INITIALLY
+        // create coffee object
+        this.coffee = new Coffee();
+        this.coffee.setCount(1);
+
+        // calculate the subtotal and display
+        setSubtotalText();
     }
 
     public void incrementQuantity(ActionEvent actionEvent) {
         int incrementValue = Integer.parseInt(quantityText.getText());
         incrementValue++;
+
         quantityText.setText(String.valueOf(incrementValue));
+
+        // set the coffee count
+        this.coffee.setCount(incrementValue);
+
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
 
     public void decrementQuantity(ActionEvent actionEvent) {
@@ -64,6 +84,25 @@ public class CoffeeController {
 
         decrementValue--;
         quantityText.setText(String.valueOf(decrementValue));
+
+        // set the coffee count
+        this.coffee.setCount(decrementValue);
+
+        // recalculate the subtotal and display
+        setSubtotalText();
+    }
+
+    private void setSubtotalText() {
+        double subtotal = this.coffee.itemPrice();
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
+        df.setMinimumFractionDigits(2);
+
+        String subtotalString = df.format(subtotal);
+
+        subtotalText.setText("$" + subtotalString);
     }
 
     public void sendWarning (String message) {
@@ -75,71 +114,191 @@ public class CoffeeController {
     }
 
     public void addToOrder(ActionEvent actionEvent) {
-        if (sizeList.getValue() == null) {
+        // check if a size has been selected
+        if (this.coffee.getSize() == null) {
             sendWarning("Please Choose A Size");
-            resetCoffeeMenu();
             return;
         }
 
-        // TODO: add to order
+        // add coffee to order and validate that it was added properly
+        boolean addedSuccessfully = MainMenuController.order.add(this.coffee);
+        if (!addedSuccessfully) {
+            sendWarning("Issue with adding to order, please try again");
+            return;
+        }
+
+        // TODO: confirmation window
+
+        // TODO: close coffee menu
+        Stage stage = (Stage) addToOrder.getScene().getWindow();
+        stage.close();
     }
 
     public void resetCoffeeMenu() {
+        // reset the add-in choices
         creamAddIn.setSelected(false);
         syrupAddIn.setSelected(false);
         milkAddIn.setSelected(false);
         caramelAddIn.setSelected(false);
         whippedcreamAddIn.setSelected(false);
+
+        // reset the quantity
         quantityText.setText("1");
-        // TODO: RESET SUBTOTAL TO 0 HERE
-        return;
+
+        // reset the coffee object
+        this.coffee = new Coffee();
+
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
+
     public void handleCream(ActionEvent actionEvent) {
         if (!creamAddIn.isSelected()) {
-            // TODO: REMOVE IT FROM SUBTOTAL
-            return;
+            // cream is unselected
+            boolean removed = this.coffee.remove(ADDINS.CREAM);
+
+            if (!removed) {
+                // unable to remove
+                creamAddIn.setSelected(true);
+                sendWarning("Cream was unable to be removed, please try again");
+            }
+        } else {
+            // cream is selected
+            boolean added = this.coffee.add(ADDINS.CREAM);
+
+            if (!added) {
+                // unable to add
+                creamAddIn.setSelected(false);
+                sendWarning("Cream was unable to be added, please try again");
+            }
         }
 
-        // TODO: ADD TO SUBTOTAL IT HAS BEEN SELECTED
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
 
     public void handleSyrup(ActionEvent actionEvent) {
         if (!syrupAddIn.isSelected()) {
-            // TODO: REMOVE IT FROM SUBTOTAL
-            return;
+            // syrup is unselected
+            boolean removed = this.coffee.remove(ADDINS.SYRUP);
+
+            if (!removed) {
+                // unable to remove
+                syrupAddIn.setSelected(true);
+                sendWarning("Syrup was unable to be removed, please try again");
+            }
+        } else {
+            // syrup is selected
+            boolean added = this.coffee.add(ADDINS.SYRUP);
+
+            if (!added) {
+                // unable to add
+                syrupAddIn.setSelected(false);
+                sendWarning("Syrup was unable to be added, please try again");
+            }
         }
 
-        // TODO: ADD TO SUBTOTAL IT HAS BEEN SELECTED
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
 
     public void handleMilk(ActionEvent actionEvent) {
         if (!milkAddIn.isSelected()) {
-            // TODO: REMOVE IT FROM SUBTOTAL
-            return;
+            // milk is unselected
+            boolean removed = this.coffee.remove(ADDINS.MILK);
+
+            if (!removed) {
+                // unable to remove
+                milkAddIn.setSelected(true);
+                sendWarning("Milk was unable to be removed, please try again");
+            }
+        } else {
+            // milk is selected
+            boolean added = this.coffee.add(ADDINS.MILK);
+
+            if (!added) {
+                // unable to add
+                milkAddIn.setSelected(false);
+                sendWarning("Milk was unable to be added, please try again");
+            }
         }
 
-        // TODO: ADD TO SUBTOTAL IT HAS BEEN SELECTED
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
 
     public void handleCaramel(ActionEvent actionEvent) {
         if (!caramelAddIn.isSelected()) {
-            // TODO: REMOVE IT FROM SUBTOTAL
-            return;
+            // caramel is unselected
+            boolean removed = this.coffee.remove(ADDINS.CARAMEL);
+
+            if (!removed) {
+                // unable to remove
+                caramelAddIn.setSelected(true);
+                sendWarning("Caramel was unable to be removed, please try again");
+            }
+        } else {
+            // milk is selected
+            boolean added = this.coffee.add(ADDINS.CARAMEL);
+
+            if (!added) {
+                // unable to add
+                caramelAddIn.setSelected(false);
+                sendWarning("Caramel was unable to be added, please try again");
+            }
         }
 
-        // TODO: ADD TO SUBTOTAL IT HAS BEEN SELECTED
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
 
     public void handleWhippedCream(ActionEvent actionEvent) {
         if (!whippedcreamAddIn.isSelected()) {
-            // TODO: REMOVE IT FROM SUBTOTAL
-            return;
+            // whipped cream is unselected
+            boolean removed = this.coffee.remove(ADDINS.WHIPPED_CREAM);
+
+            if (!removed) {
+                // unable to remove
+                whippedcreamAddIn.setSelected(true);
+                sendWarning("Whipped Cream was unable to be removed, please try again");
+            }
+        } else {
+            // milk is selected
+            boolean added = this.coffee.add(ADDINS.WHIPPED_CREAM);
+
+            if (!added) {
+                // unable to add
+                whippedcreamAddIn.setSelected(false);
+                sendWarning("Whipped Cream was unable to be added, please try again");
+            }
         }
 
-        // TODO: ADD TO SUBTOTAL IT HAS BEEN SELECTED
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
 
     public void handleSize(ActionEvent actionEvent) {
-        // TODO: CALCULATE SUBTOTAL BASED OFF SIZE
+        // check that something is selected
+        if (sizeList.getValue() == null) {
+            this.coffee.setSize(null);
+
+            // recalculate the subtotal and display
+            setSubtotalText();
+            return;
+        }
+
+        // determine the size
+        COFFEE_SIZE sizeOfCoffee = null;
+        for (COFFEE_SIZE size : COFFEE_SIZE.values()) {
+            if (size.getName().equals(sizeList.getValue().toString())) {
+                sizeOfCoffee = size;
+            }
+        }
+
+        // set the size for the coffee object
+        this.coffee.setSize(sizeOfCoffee);
+
+        // recalculate the subtotal and display
+        setSubtotalText();
     }
 }

@@ -19,6 +19,10 @@ public class Coffee extends MenuItem implements Customizable {
         this.count = 0;
     }
 
+    public COFFEE_SIZE getSize() {
+        return this.size;
+    }
+
     /**
      * Setter to set the size of the coffee object
      * @param size object that the user wants

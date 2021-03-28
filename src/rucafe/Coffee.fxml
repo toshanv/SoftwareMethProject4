@@ -42,12 +42,12 @@
          </font></Text>
       <Button layoutX="270.0" layoutY="328.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
       <Button layoutX="340.0" layoutY="328.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
-      <TextField editable="false" layoutX="434.0" layoutY="254.0" prefHeight="27.0" prefWidth="113.0" />
+      <TextField fx:id="subtotalText" editable="false" layoutX="434.0" layoutY="254.0" prefHeight="27.0" prefWidth="113.0" />
       <Text layoutX="434.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button layoutX="434.0" layoutY="294.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="27.0" prefWidth="113.0" text="add to order" />
+      <Button fx:id="addToOrder" layoutX="434.0" layoutY="294.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="27.0" prefWidth="113.0" text="add to order" />
    </children>
 </AnchorPane>

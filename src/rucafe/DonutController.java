@@ -79,7 +79,9 @@ public class DonutController {
     }
 
     public void setFlavors(ActionEvent actionEvent) {
-        if  (donutSelection.getValue().toString().equals("Yeast Donut")) {
+        if (donutSelection.getValue() == null) {
+            flavorDonuts.setItems(null);
+        } else if  (donutSelection.getValue().toString().equals("Yeast Donut")) {
             ObservableList<String> yeastTypes = FXCollections.observableArrayList(DONUT_TYPE.YEAST.getFlavors());
             flavorDonuts.setItems(yeastTypes);
         } else if (donutSelection.getValue().toString().equals("Cake Donut")) {
@@ -88,8 +90,6 @@ public class DonutController {
         } else if (donutSelection.getValue().toString().equals("Donut Holes")) {
             ObservableList<String> holeTypes = FXCollections.observableArrayList(DONUT_TYPE.HOLE.getFlavors());
             flavorDonuts.setItems(holeTypes);
-        } else {
-            flavorDonuts.setItems(null);
         }
     }
 
@@ -196,11 +196,12 @@ public class DonutController {
             }
         }
 
+        // TODO: Confirmation Window
+
         // added successfully
         // TODO: remove print statement
         System.out.println(MainMenuController.order.orderToStringList());
         Stage stage = (Stage) addToOrder.getScene().getWindow();
         stage.close();
-        // TODO: Confirmation Window
     }
 }

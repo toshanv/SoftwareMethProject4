@@ -32,6 +32,10 @@ public class Donut extends MenuItem {
 
     @Override
     public double itemPrice() {
+        if (this.donutType == null) {
+            return 0;
+        }
+
         return this.donutType.getPrice() * this.count;
     }
 
