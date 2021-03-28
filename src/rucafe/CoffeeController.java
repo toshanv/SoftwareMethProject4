@@ -93,15 +93,13 @@ public class CoffeeController {
     }
 
     private void setSubtotalText() {
-        double subtotal = this.coffee.itemPrice();
-
         DecimalFormat df = new DecimalFormat("#.##");
         df.setGroupingUsed(true);
         df.setGroupingSize(3);
         df.setMinimumFractionDigits(2);
 
+        double subtotal = this.coffee.itemPrice();
         String subtotalString = df.format(subtotal);
-
         subtotalText.setText("$" + subtotalString);
     }
 

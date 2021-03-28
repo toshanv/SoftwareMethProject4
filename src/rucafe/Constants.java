@@ -34,4 +34,7 @@ public class Constants {
     public static final String[] DONUT_YEAST_FLAVORS = {"Jelly Filled", "Glaze", "Chocolate Frosted", "Lemon Filled"};
     public static final String[] DONUT_CAKE_FLAVORS = {"Old Fashion", "Blueberry", "Cinnamon Sugar"};
     public static final String[] DONUT_HOLE_FLAVORS = {"Cinnamon Sugar Holes", "Blueberry holes", "Jelly Holes"};
+
+    // constants for order
+    public static final double SALESTAX_PERCENTAGE = 0.06625;
 }

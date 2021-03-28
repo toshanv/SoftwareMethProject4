@@ -73,4 +73,13 @@ public class Order implements Customizable {
 
         return orderString;
     }
+
+    public double getSubtotal() {
+        double subtotal = 0;
+        for (MenuItem orderItem : this.order) {
+            subtotal += orderItem.itemPrice();
+        }
+
+        return subtotal;
+    }
 }
