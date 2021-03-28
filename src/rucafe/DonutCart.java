@@ -17,6 +17,10 @@ public class DonutCart {
         return this.cart.size();
     }
 
+    public ArrayList<Donut> getCart() {
+        return this.cart;
+    }
+
     public void addToCart(Donut toAdd) {
         // check if the donut already exists, if so, increment the count instead of adding new donut
         for (Donut currDonut : this.cart) {
@@ -44,12 +48,12 @@ public class DonutCart {
         return totalPrice;
     }
 
-    public ArrayList<String> cartToString() {
+    public ArrayList<String> cartToStringList() {
         ArrayList<String> cartString = new ArrayList<>();
 
         for (Donut currDonut : this.cart) {
-            String currDonutString = currDonut.getDonutFlavor() + " " + currDonut.getDonutType().getName() + " (" + currDonut.getCount() + ")";
-            cartString.add(currDonutString);
+            //String currDonutString = currDonut.getDonutFlavor() + " " + currDonut.getDonutType().getName() + " (" + currDonut.getCount() + ")";
+            cartString.add(currDonut.toString());
         }
 
         return cartString;

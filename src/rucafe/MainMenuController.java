@@ -12,6 +12,10 @@ import javafx.stage.WindowEvent;
 public class MainMenuController {
 
     // TODO: initialize orders and store orders here
+    public static Order order;
+
+    private int orderNumber = 0;
+    private boolean orderExist = false;
 
     public void handleClickOrderDonuts(ActionEvent actionEvent) {
         try {
@@ -27,6 +31,15 @@ public class MainMenuController {
             stage.setX(600);
             stage.setY(200);
 
+            if (!orderExist) {
+                // initialize current order if one does not exist already
+                this.order = new Order(this.orderNumber);
+
+                this.orderExist = true;
+
+                this.orderNumber++;
+            }
+
             // disable main menu after opening donut window
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
@@ -36,4 +49,7 @@ public class MainMenuController {
         }
     }
 
+    public boolean addToOrder(Object obj) {
+        return this.order.add(obj);
+    }
 }

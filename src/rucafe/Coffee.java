@@ -93,4 +93,22 @@ public class Coffee extends MenuItem implements Customizable {
         // calculate and return the price of the coffee
         return (this.size.getPrice() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE)) * this.count;
     }
+
+    @Override
+    public String toString() {
+        String addIns = "[";
+        if (this.currAddIns.size() == 0) {
+            addIns += "]";
+        } else {
+            int i;
+
+            for (i = 0; i < this.currAddIns.size() - 1; i++) {
+                addIns += this.currAddIns.get(i).getName() + ", ";
+            }
+
+            addIns += this.currAddIns.get(i).getName() + "]";
+        }
+
+        return "Coffee (" + this.count + ") " + this.size.getName() + " " + addIns;
+    }
 }

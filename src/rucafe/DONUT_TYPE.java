@@ -10,7 +10,7 @@ public enum DONUT_TYPE {
     private final String[] flavors;
 
     /**
-     * Setter for enum DONUT_TYPE
+     * Constructor for enum DONUT_TYPE
      * @param price of the donut
      * @param flavors for the donut
      */

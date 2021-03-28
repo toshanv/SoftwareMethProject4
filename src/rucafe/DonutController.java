@@ -133,7 +133,7 @@ public class DonutController {
         cart.addToCart(donutToAdd);
 
         // get the cart as a string to display
-        ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToString());
+        ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToStringList());
         donutOrderList.setItems(cartString);
 
         // calculate and display subtotal
@@ -160,7 +160,7 @@ public class DonutController {
         this.cart.removeFromCart(toRemove);
 
         // get the cart as a string to display
-        ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToString());
+        ObservableList<String> cartString = FXCollections.observableArrayList(this.cart.cartToStringList());
         donutOrderList.setItems(cartString);
 
         // calculate and display subtotal
@@ -168,5 +168,26 @@ public class DonutController {
 
         resetDonutMenu();
         return;
+    }
+
+    public void addToOrder(ActionEvent actionEvent) {
+        // error checks
+        if (this.cart.getSize() == 0) {
+            sendWarning("There is nothing to add to order. Please add donuts to the cart first.");
+            return;
+        }
+
+        for (Donut toAdd : this.cart.getCart()) {
+            boolean addedSuccessfully = MainMenuController.order.add(toAdd);
+
+            if (!addedSuccessfully) {
+                sendWarning("Issue with adding to order, please try again");
+                return;
+            }
+        }
+
+        // added successfully
+        System.out.println(MainMenuController.order.orderToStringList());
+        // TODO: close the window
     }
 }

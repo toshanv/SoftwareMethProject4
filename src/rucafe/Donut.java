@@ -34,4 +34,9 @@ public class Donut extends MenuItem {
     public double itemPrice() {
         return this.donutType.getPrice() * this.count;
     }
+
+    @Override
+    public String toString() {
+        return this.getDonutFlavor() + " " + this.getDonutType().getName() + " (" + this.getCount() + ")";
+    }
 }
