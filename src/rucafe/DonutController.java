@@ -186,6 +186,7 @@ public class DonutController {
         }
 
         // added successfully
+        // TODO: remove print statement
         System.out.println(MainMenuController.order.orderToStringList());
         // TODO: close the window
     }
