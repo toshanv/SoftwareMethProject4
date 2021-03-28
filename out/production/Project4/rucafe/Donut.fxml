@@ -30,7 +30,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="430.0" layoutY="444.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="27.0" prefWidth="150.0" text="add to order" />
+      <Button fx:id="addToOrder" layoutX="430.0" layoutY="444.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="27.0" prefWidth="150.0" text="add to order" />
       <ScrollPane layoutX="120.0" layoutY="227.0" prefHeight="200.0" prefWidth="175.0">
          <content>
             <ListView fx:id="flavorDonuts" prefHeight="200.0" prefWidth="150.0" />

@@ -5,9 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DonutController {
     @FXML
@@ -24,6 +31,9 @@ public class DonutController {
 
     @FXML
     public TextField subtotalText;
+
+    @FXML
+    public Button addToOrder;
 
     DonutCart cart;
 
@@ -188,6 +198,7 @@ public class DonutController {
         // added successfully
         // TODO: remove print statement
         System.out.println(MainMenuController.order.orderToStringList());
-        // TODO: close the window
+        Stage stage = (Stage) addToOrder.getScene().getWindow();
+        stage.close();
     }
 }
