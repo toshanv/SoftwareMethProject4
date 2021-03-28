@@ -5,10 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.lang.management.ManagementFactory;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -25,6 +28,9 @@ public class ViewOrdersController {
 
     @FXML
     public TextField totalText;
+
+    @FXML
+    public Button placeOrder;
 
 
     public void initialize() {
@@ -64,11 +70,27 @@ public class ViewOrdersController {
         setPrices();
     }
 
-    // TODO: Confirmation page and close window - FOR CHRIS
     public void placeOrder(ActionEvent actionEvent) {
-        if (itemList.getSelectionModel() == null) {
+        if (MainMenuController.order.getSize() == 0) {
             sendWarning("You have no items in your order");
+            return;
         }
+
+        // add the current order to storeOrders
+        boolean addedSuccessfully = MainMenuController.storeOrders.add(MainMenuController.order);
+
+        if (!addedSuccessfully) {
+            sendWarning("Order was not able to be placed. Please try again.");
+            return;
+        }
+
+        MainMenuController.orderExist = false;
+
+        // TODO: Confirmation page - FOR CHRIS
+
+        // added successfully
+        Stage stage = (Stage) placeOrder.getScene().getWindow();
+        stage.close();
     }
 
     public void sendWarning (String message) {

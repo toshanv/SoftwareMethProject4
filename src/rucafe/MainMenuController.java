@@ -14,12 +14,15 @@ public class MainMenuController {
 
     // TODO: initialize orders and store orders here
     public static Order order;
+    public static StoreOrders storeOrders = new StoreOrders();
 
     private int orderNumber = 0;
-    private boolean orderExist = false;
+    public static boolean orderExist = false;
 
     public void handleClickOrderDonuts(ActionEvent actionEvent) {
         try {
+            createNewOrder();
+
             FXMLLoader fxmlLoader;
             FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("Donut.fxml"));
@@ -32,15 +35,6 @@ public class MainMenuController {
             stage.setX(600);
             stage.setY(200);
 
-            if (!orderExist) {
-                // initialize current order if one does not exist already
-                this.order = new Order(this.orderNumber);
-
-                this.orderExist = true;
-
-                this.orderNumber++;
-            }
-
             // disable main menu after opening donut window
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
@@ -51,6 +45,8 @@ public class MainMenuController {
 
     public void handleClickViewOrder(ActionEvent actionEvent) {
         try {
+            createNewOrder();
+
             FXMLLoader fxmlLoader;
             FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("ViewOrders.fxml"));
@@ -103,6 +99,8 @@ public class MainMenuController {
 
     public void handleClickOrderCoffee(ActionEvent actionEvent) {
         try {
+            createNewOrder();
+
             FXMLLoader fxmlLoader;
             FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("Coffee.fxml"));
@@ -115,20 +113,22 @@ public class MainMenuController {
             stage.setX(600);
             stage.setY(200);
 
-            if (!orderExist) {
-                // initialize current order if one does not exist already
-                this.order = new Order(this.orderNumber);
-
-                this.orderExist = true;
-
-                this.orderNumber++;
-            }
-
             // disable main menu after opening donut window
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (Exception e) {
             sendWarning("Can't Load New Window");
+        }
+    }
+
+    private void createNewOrder() {
+        if (!this.orderExist) {
+            // initialize current order if one does not exist already
+            this.order = new Order(this.orderNumber);
+
+            this.orderExist = true;
+
+            this.orderNumber++;
         }
     }
 }

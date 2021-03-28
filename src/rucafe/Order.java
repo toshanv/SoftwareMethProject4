@@ -16,6 +16,10 @@ public class Order implements Customizable {
         return this.order;
     }
 
+    public int getSize() {
+        return this.order.size();
+    }
+
     public int getOrderNum() {
         return this.orderNum;
     }

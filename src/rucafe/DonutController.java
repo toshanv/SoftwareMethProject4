@@ -81,7 +81,7 @@ public class DonutController {
     public void setFlavors(ActionEvent actionEvent) {
         if (donutSelection.getValue() == null) {
             flavorDonuts.setItems(null);
-        } else if  (donutSelection.getValue().toString().equals("Yeast Donut")) {
+        } else if (donutSelection.getValue().toString().equals("Yeast Donut")) {
             ObservableList<String> yeastTypes = FXCollections.observableArrayList(DONUT_TYPE.YEAST.getFlavors());
             flavorDonuts.setItems(yeastTypes);
         } else if (donutSelection.getValue().toString().equals("Cake Donut")) {
