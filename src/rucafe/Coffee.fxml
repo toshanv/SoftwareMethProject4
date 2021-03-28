@@ -5,49 +5,49 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rucafe.CoffeeController">
+<AnchorPane prefHeight="400.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rucafe.CoffeeController">
    <children>
-      <Text fill="#da0606" layoutX="236.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee Menu">
+      <Text fill="#da0606" layoutX="209.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee Menu">
          <font>
             <Font name="Serif Regular" size="24.0" />
          </font>
       </Text>
 
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="226.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="197.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="https://static.thenounproject.com/png/779852-200.png" />
          </image>
       </ImageView>
 
-      <CheckBox fx:id="creamAddIn" layoutX="60.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleCream" text="Cream" />
-      <CheckBox fx:id="syrupAddIn" layoutX="150.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleSyrup" text="Syrup" />
-      <CheckBox fx:id="milkAddIn" layoutX="60.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleMilk" text="Milk" />
-      <CheckBox fx:id="caramelAddIn" layoutX="150.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleCaramel" text="Caramel" />
-      <CheckBox fx:id="whippedcreamAddIn" layoutX="60.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleWhippedCream" text="Whipped Cream" />
-      <Text layoutX="60.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add-Ins:" wrappingWidth="69.0">
+      <CheckBox fx:id="creamAddIn" layoutX="43.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleCream" text="Cream" />
+      <CheckBox fx:id="syrupAddIn" layoutX="133.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleSyrup" text="Syrup" />
+      <CheckBox fx:id="milkAddIn" layoutX="43.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleMilk" text="Milk" />
+      <CheckBox fx:id="caramelAddIn" layoutX="133.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleCaramel" text="Caramel" />
+      <CheckBox fx:id="whippedcreamAddIn" layoutX="43.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleWhippedCream" text="Whipped Cream" />
+      <Text layoutX="43.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add-Ins:" wrappingWidth="69.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <ComboBox fx:id="sizeList" layoutX="272.0" layoutY="245.0" onAction="#handleSize" prefHeight="27.0" prefWidth="127.0" />
-      <TextField fx:id="quantityText" editable="false" layoutX="344.0" layoutY="294.0" prefHeight="27.0" prefWidth="56.0" />
-      <Text layoutX="272.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Size:">
+      <ComboBox fx:id="sizeList" layoutX="255.0" layoutY="245.0" onAction="#handleSize" prefHeight="27.0" prefWidth="127.0" />
+      <TextField fx:id="quantityText" editable="false" layoutX="327.0" layoutY="294.0" prefHeight="27.0" prefWidth="56.0" />
+      <Text layoutX="255.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Size:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="273.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:">
+      <Text layoutX="256.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:">
          <font>
             <Font size="15.0" />
          </font></Text>
-      <Button layoutX="287.0" layoutY="328.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
-      <Button layoutX="357.0" layoutY="328.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
-      <TextField editable="false" layoutX="451.0" layoutY="254.0" prefHeight="27.0" prefWidth="113.0" />
-      <Text layoutX="451.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:">
+      <Button layoutX="270.0" layoutY="328.0" mnemonicParsing="false" onAction="#decrementQuantity" prefHeight="27.0" prefWidth="29.0" text="-" />
+      <Button layoutX="340.0" layoutY="328.0" mnemonicParsing="false" onAction="#incrementQuantity" prefHeight="27.0" prefWidth="29.0" text="+" />
+      <TextField editable="false" layoutX="434.0" layoutY="254.0" prefHeight="27.0" prefWidth="113.0" />
+      <Text layoutX="434.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button layoutX="451.0" layoutY="294.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="27.0" prefWidth="113.0" text="add to order" />
+      <Button layoutX="434.0" layoutY="294.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="27.0" prefWidth="113.0" text="add to order" />
    </children>
 </AnchorPane>
