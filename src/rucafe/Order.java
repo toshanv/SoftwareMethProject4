@@ -20,6 +20,10 @@ public class Order implements Customizable {
         return this.orderNum;
     }
 
+    public MenuItem getOrderItem(int index) {
+        return this.order.get(index);
+    }
+
     @Override
     public boolean add(Object obj) {
         if (obj instanceof Donut) {

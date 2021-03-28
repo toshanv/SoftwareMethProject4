@@ -37,24 +37,31 @@ public class ViewOrdersController {
 
     public void updateOrderDisplay() {
         ObservableList<String> orderString = FXCollections.observableArrayList(MainMenuController.order.orderToStringList());
-        itemList.setItems(orderString);
+        this.itemList.setItems(orderString);
     }
 
     public void removeItem(ActionEvent actionEvent) {
-        if (itemList.getSelectionModel().getSelectedItem() == null) {
+        if (this.itemList.getSelectionModel().getSelectedItem() == null) {
             sendWarning("You did not select item to remove");
             return;
         }
 
-        // TODO: find what item to remove
+        // create MenuItem object using the selected item in the order
+        MenuItem toRemove = MainMenuController.order.getOrderItem((int) this.itemList.getSelectionModel().getSelectedIndices().get(0));
 
-        // TODO: remove item
+        // remove the selected order item from the order
+        boolean removedSuccessfully = MainMenuController.order.remove(toRemove);
 
-        // TODO: set selection to null
+        if (!removedSuccessfully) {
+            sendWarning("Item was not removed, please try again.");
+            return;
+        }
 
-        // TODO: redisplay the items in order
+        // update the order list to display current order
+        updateOrderDisplay();
 
-        // TODO: update the price breakdown
+        // recalculate and display the price breakdown
+        setPrices();
     }
 
     // TODO: Confirmation page and close window - FOR CHRIS
@@ -91,14 +98,35 @@ public class ViewOrdersController {
         totalText.setText("$" + totalString);
     }
 
-    // TODO: Display Subtotal, Tax, and price for the specific item selected
+    public void setPrices(double subtotal) {
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
+        df.setMinimumFractionDigits(2);
+
+        String subtotalString = df.format(subtotal);
+        subtotalText.setText("$" + subtotalString);
+
+        double salestax = subtotal * Constants.SALESTAX_PERCENTAGE;
+        String salestaxString = df.format(salestax);
+        salestaxText.setText("$" + salestaxString);
+
+        double total = subtotal + salestax;
+        String totalString = df.format(total);
+        totalText.setText("$" + totalString);
+    }
+
     public void handleItemSelected(MouseEvent mouseEvent) {
-        if (itemList.selectionModelProperty() == null) {
+        if (itemList.getSelectionModel().getSelectedItem() == null) {
             // calculate and display the price breakdown of full order
             setPrices();
             return;
         }
 
-        // TODO: Display Subtotal, Tax, and price for the specific item selected
+        // create MenuItem object using the selected item in the order
+        MenuItem selectedItem = MainMenuController.order.getOrderItem((int) this.itemList.getSelectionModel().getSelectedIndices().get(0));
+
+        // calculate and display the price breakdown of a specific item
+        setPrices(selectedItem.itemPrice());
     }
 }

@@ -199,8 +199,6 @@ public class DonutController {
         // TODO: Confirmation Window
 
         // added successfully
-        // TODO: remove print statement
-        System.out.println(MainMenuController.order.orderToStringList());
         Stage stage = (Stage) addToOrder.getScene().getWindow();
         stage.close();
     }
