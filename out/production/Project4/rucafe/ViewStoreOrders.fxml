@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rucafe.ViewStoreOrdersController">
+   <children>
+      <Text layoutX="239.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store Orders">
+         <font>
+            <Font name="Serif Regular" size="24.0" />
+         </font></Text>
+      <ComboBox fx:id="orderList" layoutX="27.0" layoutY="50.0" onAction="#displayOrder" prefWidth="150.0" />
+      <Text layoutX="380.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" />
+      <TextField editable="false" layoutX="425.0" layoutY="50.0" />
+      <ListView layoutX="27.0" layoutY="89.0" prefHeight="248.0" prefWidth="547.0" />
+      <Button layoutX="293.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancelOrder" prefHeight="26.0" prefWidth="136.0" text="Cancel Order" />
+      <Button layoutX="438.0" layoutY="345.0" mnemonicParsing="false" onAction="#exportOrder" prefHeight="26.0" prefWidth="136.0" text="Export Orders" />
+   </children>
+</AnchorPane>

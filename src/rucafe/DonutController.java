@@ -49,6 +49,7 @@ public class DonutController {
         donutSelection.setItems(donutTypes);
 
         quantityText.setText("1");
+        setSubtotalText();
     }
 
     public void incrementQuantity(ActionEvent actionEvent) {
@@ -200,5 +201,6 @@ public class DonutController {
         System.out.println(MainMenuController.order.orderToStringList());
         Stage stage = (Stage) addToOrder.getScene().getWindow();
         stage.close();
+        // TODO: Confirmation Window
     }
 }

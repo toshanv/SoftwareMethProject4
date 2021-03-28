@@ -23,7 +23,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="219.0" layoutY="75.0" mnemonicParsing="false" prefHeight="171.0" prefWidth="163.0" text="Order Coffee" wrapText="true">
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="219.0" layoutY="75.0" mnemonicParsing="false" onAction="#handleClickOrderCoffee" prefHeight="171.0" prefWidth="163.0" text="Order Coffee" wrapText="true">
                <graphic>
                   <ImageView blendMode="SRC_ATOP" fitHeight="135" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,8 +37,8 @@
                   <Font name="Serif Bold" size="24.0" />
                </font>
             </Text>
-            <Button alignment="CENTER" contentDisplay="TOP" layoutX="69.0" layoutY="265.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="274.0" text="View Your Order" textAlignment="CENTER" wrapText="true" />
-            <Button alignment="CENTER" contentDisplay="TOP" layoutX="69.0" layoutY="320.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="274.0" text="View Store Orders" textAlignment="CENTER" wrapText="true" />
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="69.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleClickViewOrder" prefHeight="39.0" prefWidth="274.0" text="View Your Order" textAlignment="CENTER" wrapText="true" />
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="69.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleClickViewStoreOrders" prefHeight="39.0" prefWidth="274.0" text="View Store Orders" textAlignment="CENTER" wrapText="true" />
          </children>
       </Pane>
    </children>

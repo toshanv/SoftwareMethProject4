@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rucafe.ViewOrdersController">
+   <children>
+      <Text layoutX="240.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Order " wrappingWidth="119.13671875">
+         <font>
+            <Font name="Serif Regular" size="24.0" />
+         </font>
+      </Text>
+      <ListView fx:id="itemList" layoutX="73.0" layoutY="51.0" onMouseClicked="#handleItemSelected" prefHeight="200.0" prefWidth="445.0" />
+      <Text layoutX="73.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sub-total:" wrappingWidth="72.13671875" />
+      <TextField fx:id="subtotalText" editable="false" layoutX="135.0" layoutY="268.0" />
+      <TextField fx:id="salestaxText" editable="false" layoutX="135.0" layoutY="317.0" />
+      <TextField fx:id="totalText" editable="false" layoutX="135.0" layoutY="364.0" />
+      <Text layoutX="73.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sales tax:" wrappingWidth="52.4375" />
+      <Text layoutX="73.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total:" wrappingWidth="33.77734375" />
+      <Button layoutX="383.0" layoutY="279.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="36.0" prefWidth="136.0" text="Remove Selected Item" />
+      <Button layoutX="383.0" layoutY="330.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="36.0" prefWidth="136.0" text="Place Order" />
+   </children>
+</AnchorPane>
