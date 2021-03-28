@@ -48,8 +48,4 @@ public class MainMenuController {
             // System.out.print("Can't Load New Window");
         }
     }
-
-    public boolean addToOrder(Object obj) {
-        return this.order.add(obj);
-    }
 }

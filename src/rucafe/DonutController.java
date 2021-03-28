@@ -28,7 +28,6 @@ public class DonutController {
     DonutCart cart;
 
     public void initialize() {
-        // TODO: set a default donut type to avoid exception
         cart = new DonutCart();
 
         ArrayList<String> donutTypesList = new ArrayList<>();
