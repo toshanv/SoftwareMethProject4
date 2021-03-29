@@ -1,5 +1,11 @@
 package rucafe;
 
+/**
+ * Enum class for the types of donuts
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public enum DONUT_TYPE {
     YEAST(Constants.YEAST_DONUT_NAME, Constants.DONUT_YEAST_PRICE, Constants.DONUT_YEAST_FLAVORS),
     CAKE(Constants.CAKE_DONUT_NAME, Constants.DONUT_CAKE_PRICE, Constants.DONUT_CAKE_FLAVORS),

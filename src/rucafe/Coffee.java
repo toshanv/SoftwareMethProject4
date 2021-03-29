@@ -2,6 +2,12 @@ package rucafe;
 
 import java.util.ArrayList;
 
+/**
+ * Coffee class that defines the coffee object
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public class Coffee extends MenuItem implements Customizable {
 
     // TODO: should this be final?
@@ -19,6 +25,10 @@ public class Coffee extends MenuItem implements Customizable {
         this.count = 0;
     }
 
+    /**
+     * Getter method for the size of the coffee object
+     * @return size enum of the coffee object
+     */
     public COFFEE_SIZE getSize() {
         return this.size;
     }
@@ -85,7 +95,7 @@ public class Coffee extends MenuItem implements Customizable {
 
     /**
      * Calculates the price of the current coffee object
-     * @return price of coffee
+     * @return price of the coffee
      */
     @Override
     public double itemPrice() {
@@ -98,6 +108,10 @@ public class Coffee extends MenuItem implements Customizable {
         return (this.size.getPrice() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE)) * this.count;
     }
 
+    /**
+     * Compiles the current coffee object to string format
+     * @return string representation of the coffee object
+     */
     @Override
     public String toString() {
         String addIns = "[";

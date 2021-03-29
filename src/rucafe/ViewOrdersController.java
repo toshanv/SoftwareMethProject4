@@ -15,6 +15,13 @@ import java.lang.management.ManagementFactory;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Controller class for the Orders GUI.
+ * Users can see all items in the order, see the price breakdown for the order and for each item, remove an item from the order, and place an order.
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public class ViewOrdersController {
 
     @FXML
@@ -32,7 +39,9 @@ public class ViewOrdersController {
     @FXML
     public Button placeOrder;
 
-
+    /**
+     * Initializes the Orders GUI
+     */
     public void initialize() {
         // display the current order items
         updateOrderDisplay();
@@ -41,11 +50,18 @@ public class ViewOrdersController {
         setPrices();
     }
 
+    /**
+     * Displays all items in the current order
+     */
     public void updateOrderDisplay() {
         ObservableList<String> orderString = FXCollections.observableArrayList(MainMenuController.order.orderToStringList());
         this.itemList.setItems(orderString);
     }
 
+    /**
+     * Removes an item from the order
+     * @param actionEvent passed when the remove from order button is pressed
+     */
     public void removeItem(ActionEvent actionEvent) {
         if (this.itemList.getSelectionModel().getSelectedItem() == null) {
             sendWarning("You did not select item to remove");
@@ -70,6 +86,10 @@ public class ViewOrdersController {
         setPrices();
     }
 
+    /**
+     * Places the current order and adds it to the list of store orders
+     * @param actionEvent passed when the place order button is pressed
+     */
     public void placeOrder(ActionEvent actionEvent) {
         if (MainMenuController.order.getSize() == 0) {
             sendWarning("You have no items in your order");
@@ -93,6 +113,10 @@ public class ViewOrdersController {
         stage.close();
     }
 
+    /**
+     * Displays warning with that passed in message
+     * @param message to display on the warning
+     */
     public void sendWarning (String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Warning!!");
@@ -101,6 +125,9 @@ public class ViewOrdersController {
         alert.showAndWait();
     }
 
+    /**
+     * Calculates and displays the subtotal of all items in the order, the sales tax, and the total price of the order
+     */
     public void setPrices() {
         DecimalFormat df = new DecimalFormat("#.##");
         df.setGroupingUsed(true);
@@ -120,6 +147,10 @@ public class ViewOrdersController {
         totalText.setText("$" + totalString);
     }
 
+    /**
+     * Calculates and displays the subtotal of a specific item in the order, the sales tax for the item, and the total price of the item
+     * @param subtotal of the item
+     */
     public void setPrices(double subtotal) {
         DecimalFormat df = new DecimalFormat("#.##");
         df.setGroupingUsed(true);
@@ -138,6 +169,10 @@ public class ViewOrdersController {
         totalText.setText("$" + totalString);
     }
 
+    /**
+     * Updates information on the display based on what item in the order is selected
+     * @param mouseEvent passed when an item in the order is selected
+     */
     public void handleItemSelected(MouseEvent mouseEvent) {
         if (itemList.getSelectionModel().getSelectedItem() == null) {
             // calculate and display the price breakdown of full order

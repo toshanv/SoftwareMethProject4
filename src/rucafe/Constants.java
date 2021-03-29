@@ -1,5 +1,11 @@
 package rucafe;
 
+/**
+ * Constants class for the RU Cafe holds all constants that are used throughout the files
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public class Constants {
     // constants for coffee
     public static final double COFFEE_ADDIN_PRICE = 0.2;

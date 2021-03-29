@@ -16,6 +16,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class for the Donut Menu GUI. Users can add donuts to the cart, remove donuts from the cart, and add all items from the cart to the order.
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public class DonutController {
     @FXML
     public TextField quantityText;
@@ -37,6 +43,9 @@ public class DonutController {
 
     DonutCart cart;
 
+    /**
+     * Initializes the Donut Menu GUI
+     */
     public void initialize() {
         cart = new DonutCart();
 
@@ -52,14 +61,22 @@ public class DonutController {
         setSubtotalText();
     }
 
+    /**
+     * Increments the quantity of donuts being ordered
+     * @param actionEvent passed when the increment quantity button is pressed
+     */
     public void incrementQuantity(ActionEvent actionEvent) {
-        int incrementValue = Integer.parseInt(quantityText.getText());
+        int incrementValue = Integer.parseInt(this.quantityText.getText());
         incrementValue++;
-        quantityText.setText(String.valueOf(incrementValue));
+        this.quantityText.setText(String.valueOf(incrementValue));
     }
 
+    /**
+     * Decrements the quantity of donuts being ordered
+     * @param actionEvent passed when the decrement quantity button is pressed
+     */
     public void decrementQuantity(ActionEvent actionEvent) {
-        int decrementValue = Integer.parseInt(quantityText.getText());
+        int decrementValue = Integer.parseInt(this.quantityText.getText());
 
         if (decrementValue == 1) {
             sendWarning("Cannot choose a quantity less than 1 to add to order.");
@@ -67,9 +84,13 @@ public class DonutController {
         }
 
         decrementValue--;
-        quantityText.setText(String.valueOf(decrementValue));
+        this.quantityText.setText(String.valueOf(decrementValue));
     }
 
+    /**
+     * Displays warning with that passed in message
+     * @param message to display on the warning
+     */
     public void sendWarning (String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Warning!!");
@@ -78,6 +99,10 @@ public class DonutController {
         alert.showAndWait();
     }
 
+    /**
+     * Sets the display to show the flavors for each type of Donut
+     * @param actionEvent passed when a type of donut is selected
+     */
     public void setFlavors(ActionEvent actionEvent) {
         if (donutSelection.getValue() == null) {
             flavorDonuts.setItems(null);
@@ -93,8 +118,11 @@ public class DonutController {
         }
     }
 
+    /**
+     * Calculates and displays the subtotal of all donuts in the cart
+     */
     private void setSubtotalText() {
-        double subtotal = cart.getTotalPrice();
+        double subtotal = this.cart.getTotalPrice();
 
         DecimalFormat df = new DecimalFormat("#.##");
         df.setGroupingUsed(true);
@@ -106,12 +134,19 @@ public class DonutController {
         subtotalText.setText("$" + subtotalString);
     }
 
+    /**
+     * Resets all selections in the Donut Menu GUI
+     */
     public void resetDonutMenu() {
-        flavorDonuts.setItems(null);
-        donutSelection.setValue("");
-        quantityText.setText("1");
+        this.flavorDonuts.setItems(null);
+        this.donutSelection.setValue("");
+        this.quantityText.setText("1");
     }
 
+    /**
+     * Adds the current donut object to the cart
+     * @param actionEvent passed when the add to cart button is pressed
+     */
     public void insertToCart(ActionEvent actionEvent) {
         // error checks
         if (flavorDonuts.getSelectionModel().getSelectedItem() == null && (donutSelection.getValue() == null || donutSelection.getValue().equals(""))) {
@@ -153,6 +188,10 @@ public class DonutController {
         return;
     }
 
+    /**
+     * Removes the selected donut from the cart
+     * @param actionEvent passed when the removed from cart button is pressed
+     */
     public void removeFromCart(ActionEvent actionEvent) {
         // error checks
         if (this.cart.getSize() == 0) {
@@ -180,6 +219,10 @@ public class DonutController {
         return;
     }
 
+    /**
+     * Adds all donuts in the cart to the current order
+     * @param actionEvent passed when the add to order button is pressed
+     */
     public void addToOrder(ActionEvent actionEvent) {
         // error checks
         if (this.cart.getSize() == 0) {
@@ -198,7 +241,7 @@ public class DonutController {
 
         // TODO: Confirmation Window
 
-        // added successfully
+        // close Donut Menu GUI
         Stage stage = (Stage) addToOrder.getScene().getWindow();
         stage.close();
     }

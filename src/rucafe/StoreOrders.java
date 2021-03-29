@@ -6,14 +6,26 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Store Orders class that defines the Store Orders object which holds all orders in the store.
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public class StoreOrders implements Customizable {
-
     private ArrayList<Order> storeOrders;
 
+    /**
+     * Constructor for the list of all store orders
+     */
     public StoreOrders() {
         this.storeOrders = new ArrayList<>();
     }
 
+    /**
+     * Getter method for a list of all order numbers in the store
+     * @return list of all order numbers
+     */
     public ArrayList<Integer> getOrderNumsList() {
         ArrayList<Integer> orderNumsList = new ArrayList<>();
 
@@ -24,6 +36,11 @@ public class StoreOrders implements Customizable {
         return orderNumsList;
     }
 
+    /**
+     * Getter method for a specific order in the store
+     * @param orderNum of the order wanted
+     * @return the order object that is wanted
+     */
     public Order getOrder(int orderNum) {
         for (Order order : this.storeOrders) {
             if (order.getOrderNum() == orderNum) {
@@ -34,10 +51,19 @@ public class StoreOrders implements Customizable {
         return null;
     }
 
+    /**
+     * Getter method for number of orders in the store
+     * @return the number of orders in the store
+     */
     public int getSize() {
         return this.storeOrders.size();
     }
 
+    /**
+     * Adds an order to the store
+     * @param obj to be added to the store
+     * @return true if the order was added, false if it was not
+     */
     @Override
     public boolean add(Object obj) {
         if (obj instanceof Order) {
@@ -54,6 +80,11 @@ public class StoreOrders implements Customizable {
         }
     }
 
+    /**
+     * Removes an order from the store
+     * @param obj to be removed from the store
+     * @return true if the order was removed, false if it was not
+     */
     @Override
     public boolean remove(Object obj) {
         if (obj instanceof Order) {

@@ -15,8 +15,13 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Controller class for the Store Orders GUI. Users can browse all orders, delete specific orders, and export all orders to a specified file.
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public class ViewStoreOrdersController {
-
     @FXML
     public ComboBox orderList;
 
@@ -44,6 +49,10 @@ public class ViewStoreOrdersController {
         this.orderList.setItems(donutTypes);
     }
 
+    /**
+     * Displays the order based on what order number was selected
+     * @param actionEvent passed when an order number is selected from the drop down
+     */
     public void displayOrder(ActionEvent actionEvent) {
         if (this.orderList.getValue() == null) {
             this.displayOrderList.setItems(null);
@@ -58,6 +67,9 @@ public class ViewStoreOrdersController {
         setTotalText();
     }
 
+    /**
+     * Calculates and displays the total price of an entire order
+     */
     public void setTotalText() {
         if (this.orderList.getValue() == null) {
             this.totalText.setText(null);
@@ -78,6 +90,10 @@ public class ViewStoreOrdersController {
         totalText.setText("$" + totalString);
     }
 
+    /**
+     * Cancels the order that is currently selected and updates the GUI
+     * @param actionEvent passed when the cancel order button is pressed
+     */
     public void cancelOrder(ActionEvent actionEvent) {
         if (this.orderList.getValue() == null) {
             sendWarning("No order has been selected to cancel");
@@ -102,13 +118,15 @@ public class ViewStoreOrdersController {
         setOrderList();
     }
 
+    /**
+     * Exports the store order information into a new file
+     * @param actionEvent passed when the export button is pressed
+     */
     public void exportOrder(ActionEvent actionEvent) {
         if (MainMenuController.storeOrders.getSize() == 0) {
             sendWarning("There are no orders to export.");
             return;
         }
-
-        // TODO: create file and export
 
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open Target File for Export");
@@ -118,8 +136,14 @@ public class ViewStoreOrdersController {
         File targetFile = chooser.showSaveDialog(stage);
 
         MainMenuController.storeOrders.export(targetFile);
+
+        // TODO: confirmation window
     }
 
+    /**
+     * Displays warning with that passed in message
+     * @param message to display on the warning
+     */
     public void sendWarning (String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Warning!!");

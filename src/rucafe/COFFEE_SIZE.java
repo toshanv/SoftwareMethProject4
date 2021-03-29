@@ -1,5 +1,11 @@
 package rucafe;
 
+/**
+ * Enum class for the Coffee Sizes
+ *
+ * @author Toshanraju Vysyaraju
+ * @author Christopher Nguyen
+ */
 public enum COFFEE_SIZE {
     SHORT(Constants.COFFEE_SHORT_NAME, Constants.COFFEE_SHORT_PRICE),
     TALL(Constants.COFFEE_TALL_NAME, Constants.COFFEE_TALL_PRICE),
@@ -26,6 +32,10 @@ public enum COFFEE_SIZE {
         return this.price;
     }
 
+    /**
+     * Getter method for the name of the coffee size
+     * @return string representation of the coffee size
+     */
     public String getName() {
         return this.name;
     }
