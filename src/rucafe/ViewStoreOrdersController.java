@@ -8,7 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -23,11 +26,17 @@ public class ViewStoreOrdersController {
     @FXML
     public ListView displayOrderList;
 
+    /**
+     * Initializes the Store Orders GUI
+     */
     public void initialize() {
         // set orderList with list of order nums
         setOrderList();
     }
 
+    /**
+     * Populates the drop down of order numbers with the current list of order numbers in the store orders list
+     */
     public void setOrderList() {
         ArrayList<Integer> orderNumsList = MainMenuController.storeOrders.getOrderNumsList();
 
@@ -35,7 +44,6 @@ public class ViewStoreOrdersController {
         this.orderList.setItems(donutTypes);
     }
 
-    // TODO: BASED On Order Selected from orderList comboBox display the order in displayOrderList
     public void displayOrder(ActionEvent actionEvent) {
         if (this.orderList.getValue() == null) {
             this.displayOrderList.setItems(null);
@@ -101,6 +109,15 @@ public class ViewStoreOrdersController {
         }
 
         // TODO: create file and export
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open Target File for Export");
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        Stage stage = new Stage();
+        File targetFile = chooser.showSaveDialog(stage);
+
+        MainMenuController.storeOrders.export(targetFile);
     }
 
     public void sendWarning (String message) {

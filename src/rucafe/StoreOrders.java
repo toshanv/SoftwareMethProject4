@@ -1,5 +1,9 @@
 package rucafe;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class StoreOrders implements Customizable {
@@ -61,6 +65,46 @@ public class StoreOrders implements Customizable {
         } else {
             // obj was not removed
             return false;
+        }
+    }
+
+    /**
+     * Exports the order info for each order in storeOrder into the designated file
+     * @param targetFile to export the storeOrders into
+     */
+    public void export(File targetFile) {
+        String output = "";
+
+        for (Order order : this.storeOrders) {
+            // print order number
+            output += "Order Number: " + order.getOrderNum() + "\n";
+
+            // calculate and format total price
+            DecimalFormat df = new DecimalFormat("#.##");
+            df.setGroupingUsed(true);
+            df.setGroupingSize(3);
+            df.setMinimumFractionDigits(2);
+
+            double subtotal = order.getSubtotal();
+            double total = subtotal + subtotal * Constants.SALESTAX_PERCENTAGE;
+
+            String totalString = df.format(total);
+            output += "\tTotal Price: " + totalString + "\n";
+
+            // print each item in the order
+            for (MenuItem item : order.getOrder()) {
+                output += "\t- " + item.toString() + "\n";
+            }
+
+            output += "\n";
+        }
+
+        try {
+            FileWriter myWriter = new FileWriter(targetFile);
+            myWriter.write(output);
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
