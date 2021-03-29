@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -68,22 +65,36 @@ public class ViewOrdersController {
             return;
         }
 
-        // create MenuItem object using the selected item in the order
-        MenuItem toRemove = MainMenuController.order.getOrderItem((int) this.itemList.getSelectionModel().getSelectedIndices().get(0));
+        // confirmation alert that performs order removal based on button click
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Remove", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
 
-        // remove the selected order item from the order
-        boolean removedSuccessfully = MainMenuController.order.remove(toRemove);
+        if (alert.getResult() == ButtonType.YES) {
+            // create MenuItem object using the selected item in the order
+            MenuItem toRemove = MainMenuController.order.getOrderItem((int) this.itemList.getSelectionModel().getSelectedIndices().get(0));
 
-        if (!removedSuccessfully) {
-            sendWarning("Item was not removed, please try again.");
+            // remove the selected order item from the order
+            boolean removedSuccessfully = MainMenuController.order.remove(toRemove);
+
+            if (!removedSuccessfully) {
+                sendWarning("Item was not removed, please try again.");
+                return;
+            }
+
+            // update the order list to display current order
+            updateOrderDisplay();
+
+            // recalculate and display the price breakdown
+            setPrices();
+
+            return;
+        } else if (alert.getResult() == ButtonType.CANCEL) {
+            alert.close();
             return;
         }
 
-        // update the order list to display current order
-        updateOrderDisplay();
+        return;
 
-        // recalculate and display the price breakdown
-        setPrices();
     }
 
     /**
@@ -96,21 +107,32 @@ public class ViewOrdersController {
             return;
         }
 
-        // add the current order to storeOrders
-        boolean addedSuccessfully = MainMenuController.storeOrders.add(MainMenuController.order);
+        // confirmation alert that adds the current order to store order based on button click
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Place", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
 
-        if (!addedSuccessfully) {
-            sendWarning("Order was not able to be placed. Please try again.");
+        if (alert.getResult() == ButtonType.YES) {
+            // add the current order to storeOrders
+            boolean addedSuccessfully = MainMenuController.storeOrders.add(MainMenuController.order);
+
+            if (!addedSuccessfully) {
+                sendWarning("Order was not able to be placed. Please try again.");
+                return;
+            }
+
+            MainMenuController.orderExist = false;
+
+            Stage stage = (Stage) placeOrder.getScene().getWindow();
+            stage.close();
+
+            return;
+        } else if (alert.getResult() == ButtonType.CANCEL) {
+            alert.close();
             return;
         }
 
-        MainMenuController.orderExist = false;
+        return;
 
-        // TODO: Confirmation page - FOR CHRIS
-
-        // added successfully
-        Stage stage = (Stage) placeOrder.getScene().getWindow();
-        stage.close();
     }
 
     /**

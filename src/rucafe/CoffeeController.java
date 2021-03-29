@@ -145,18 +145,28 @@ public class CoffeeController {
             return;
         }
 
-        // add coffee to order and validate that it was added properly
-        boolean addedSuccessfully = MainMenuController.order.add(this.coffee);
-        if (!addedSuccessfully) {
-            sendWarning("Issue with adding to order, please try again");
+        // confirmation alert that performs add to order based on button click
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Add To Order", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            // add coffee to order and validate that it was added properly
+            boolean addedSuccessfully = MainMenuController.order.add(this.coffee);
+            if (!addedSuccessfully) {
+                sendWarning("Issue with adding to order, please try again");
+                return;
+            }
+            Stage stage = (Stage) addToOrder.getScene().getWindow();
+            stage.close();
+
+            return;
+        } else if (alert.getResult() == ButtonType.CANCEL) {
+            alert.close();
             return;
         }
 
-        // TODO: confirmation window
+       return;
 
-        // close the coffee menu
-        Stage stage = (Stage) addToOrder.getScene().getWindow();
-        stage.close();
     }
 
     // TODO: check if we can get rid of this method

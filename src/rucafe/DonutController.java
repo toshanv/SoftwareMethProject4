@@ -230,19 +230,29 @@ public class DonutController {
             return;
         }
 
-        for (Donut toAdd : this.cart.getCart()) {
-            boolean addedSuccessfully = MainMenuController.order.add(toAdd);
+        // confirmation alert that performs add to order based on button click
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Add To Order", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
 
-            if (!addedSuccessfully) {
-                sendWarning("Issue with adding to order, please try again");
-                return;
+        if (alert.getResult() == ButtonType.YES) {
+            for (Donut toAdd : this.cart.getCart()) {
+                boolean addedSuccessfully = MainMenuController.order.add(toAdd);
+
+                if (!addedSuccessfully) {
+                    sendWarning("Issue with adding to order, please try again");
+                    return;
+                }
             }
+            Stage stage = (Stage) addToOrder.getScene().getWindow();
+            stage.close();
+
+            return;
+        } else if (alert.getResult() == ButtonType.CANCEL) {
+            alert.close();
+            return;
         }
 
-        // TODO: Confirmation Window
+        return;
 
-        // close Donut Menu GUI
-        Stage stage = (Stage) addToOrder.getScene().getWindow();
-        stage.close();
     }
 }

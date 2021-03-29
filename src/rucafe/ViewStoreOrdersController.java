@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -100,22 +97,34 @@ public class ViewStoreOrdersController {
             return;
         }
 
-        // find and create object for order to remove
-        int orderNum = Integer.parseInt(orderList.getValue().toString());
-        Order toRemove = MainMenuController.storeOrders.getOrder(orderNum);
+        // confirmation alert that cancels an order based on button click
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Cancel", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
 
-        // remove the order from storeOrders
-        boolean removedSuccessfully = MainMenuController.storeOrders.remove(toRemove);
+        if (alert.getResult() == ButtonType.YES) {
+            // find and create object for order to remove
+            int orderNum = Integer.parseInt(orderList.getValue().toString());
+            Order toRemove = MainMenuController.storeOrders.getOrder(orderNum);
 
-        if (!removedSuccessfully) {
-            sendWarning("Order was unable to be cancelled. Please try again.");
+            // remove the order from storeOrders
+            boolean removedSuccessfully = MainMenuController.storeOrders.remove(toRemove);
+
+            if (!removedSuccessfully) {
+                sendWarning("Order was unable to be cancelled. Please try again.");
+                return;
+            }
+
+            // update order nums list
+            setOrderList();
+
+            return;
+        } else if (alert.getResult() == ButtonType.CANCEL) {
+            alert.close();
             return;
         }
 
-        // TODO: confirmation window
+        return;
 
-        // update order nums list
-        setOrderList();
     }
 
     /**
@@ -128,16 +137,29 @@ public class ViewStoreOrdersController {
             return;
         }
 
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Open Target File for Export");
-        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        Stage stage = new Stage();
-        File targetFile = chooser.showSaveDialog(stage);
+        // confirmation alert that performs export based on button click
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Export", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
 
-        MainMenuController.storeOrders.export(targetFile);
+        if (alert.getResult() == ButtonType.YES) {
+            // export order
+            FileChooser chooser = new FileChooser();
+            chooser.setTitle("Open Target File for Export");
+            chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                    new FileChooser.ExtensionFilter("All Files", "*.*"));
+            Stage stage = new Stage();
+            File targetFile = chooser.showSaveDialog(stage);
 
-        // TODO: confirmation window
+            MainMenuController.storeOrders.export(targetFile);
+
+            return;
+        } else if (alert.getResult() == ButtonType.CANCEL) {
+            alert.close();
+            return;
+        }
+
+        return;
+
     }
 
     /**
