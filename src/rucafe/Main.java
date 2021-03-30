@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * This class is the main driver that runs the program and starts the application
@@ -24,8 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
         primaryStage.setTitle("Ru Cafe Main Menu");
-        // TODO: replace magic numbers
-        primaryStage.setScene(new Scene(root, 450, 400));
+        primaryStage.setScene(new Scene(root, Constants.MAIN_STAGE_WIDTH, Constants.MAIN_STAGE_HEIGHT));
         primaryStage.show();
     }
 

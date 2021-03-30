@@ -8,13 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-
-import java.awt.*;
-import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Controller class for the Donut Menu GUI. Users can add donuts to the cart, remove donuts from the cart, and add all items from the cart to the order.

@@ -7,10 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.lang.management.ManagementFactory;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 /**
  * Controller class for the Orders GUI.

@@ -1,9 +1,5 @@
 package rucafe;
 
-import java.util.ArrayList;
-
-// TODO: remove all unused imports from all files
-
 /**
  * Donut class that defines the Donut object
  *

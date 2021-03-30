@@ -7,6 +7,13 @@ package rucafe;
  * @author Christopher Nguyen
  */
 public class Constants {
+    // constants for stage sizes
+    public static final int MAIN_STAGE_WIDTH = 450;
+    public static final int MAIN_STAGE_HEIGHT = 400;
+    public static final int ADDITIONAL_STAGE_WIDTH = 600;
+    public static final int ADDITIONAL_STAGE_HEIGHT = 200;
+
+
     // constants for coffee
     public static final double COFFEE_ADDIN_PRICE = 0.2;
     public static final double COFFEE_BASE_PRICE = 1.99;

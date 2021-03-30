@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 
 /**
  * Controller class for the main menu of the RU Cafe. Users can open donut and coffee menus, open current order, and open all store orders.
@@ -39,9 +37,8 @@ public class MainMenuController {
             stage.setTitle("Order Donuts");
             stage.setScene(new Scene(root1));
 
-            // TODO: replace magic nums
-            stage.setX(600);
-            stage.setY(200);
+            stage.setX(Constants.ADDITIONAL_STAGE_WIDTH);
+            stage.setY(Constants.ADDITIONAL_STAGE_HEIGHT);
 
             // disable main menu after opening donut window
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -67,9 +64,8 @@ public class MainMenuController {
             stage.setTitle("Order Coffee");
             stage.setScene(new Scene(root1));
 
-            // TODO: replace magic nums
-            stage.setX(600);
-            stage.setY(200);
+            stage.setX(Constants.ADDITIONAL_STAGE_WIDTH);
+            stage.setY(Constants.ADDITIONAL_STAGE_HEIGHT);
 
             // disable main menu after opening donut window
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -95,9 +91,8 @@ public class MainMenuController {
             stage.setTitle("View Your Current Order");
             stage.setScene(new Scene(root1));
 
-            // TODO: replace magic nums
-            stage.setX(600);
-            stage.setY(200);
+            stage.setX(Constants.ADDITIONAL_STAGE_WIDTH);
+            stage.setY(Constants.ADDITIONAL_STAGE_HEIGHT);
 
             // disable main menu after opening donut window
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -121,9 +116,8 @@ public class MainMenuController {
             stage.setTitle("View Your Store Orders");
             stage.setScene(new Scene(root1));
 
-            // TODO: replace magic nums
-            stage.setX(600);
-            stage.setY(200);
+            stage.setX(Constants.ADDITIONAL_STAGE_WIDTH);
+            stage.setY(Constants.ADDITIONAL_STAGE_HEIGHT);
 
             // disable main menu after opening donut window
             stage.initModality(Modality.APPLICATION_MODAL);

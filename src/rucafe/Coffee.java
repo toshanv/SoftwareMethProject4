@@ -9,8 +9,6 @@ import java.util.ArrayList;
  * @author Christopher Nguyen
  */
 public class Coffee extends MenuItem implements Customizable {
-
-    // TODO: should this be final?
     private final ArrayList<ADDINS> currAddIns;
     private COFFEE_SIZE size;
     private int count;
@@ -60,8 +58,6 @@ public class Coffee extends MenuItem implements Customizable {
         if (obj instanceof ADDINS) {
             // cast obj to ADDINS object
             ADDINS toAdd = (ADDINS) obj;
-
-            // TODO: do we need to check if its already in the list? i dont think its possible that we will try to add something thats already in it
 
             this.currAddIns.add(toAdd);
             addedSuccessfully = true;

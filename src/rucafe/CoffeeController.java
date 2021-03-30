@@ -169,28 +169,6 @@ public class CoffeeController {
 
     }
 
-    // TODO: check if we can get rid of this method
-    /**
-     * Resets the Coffee Menu
-     */
-    public void resetCoffeeMenu() {
-        // reset the add-in choices
-        creamAddIn.setSelected(false);
-        syrupAddIn.setSelected(false);
-        milkAddIn.setSelected(false);
-        caramelAddIn.setSelected(false);
-        whippedcreamAddIn.setSelected(false);
-
-        // reset the quantity
-        quantityText.setText("1");
-
-        // reset the coffee object
-        this.coffee = new Coffee();
-
-        // recalculate the subtotal and display
-        setSubtotalText();
-    }
-
     /**
      * Handles when the cream add-in is added or removed from the current coffee object
      * @param actionEvent passed when cream is checked of unchecked
