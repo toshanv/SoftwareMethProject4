@@ -30,7 +30,6 @@ public class MainMenuController {
             createNewOrder();
 
             FXMLLoader fxmlLoader;
-            FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("Donut.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -57,7 +56,6 @@ public class MainMenuController {
             createNewOrder();
 
             FXMLLoader fxmlLoader;
-            FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("Coffee.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -84,7 +82,6 @@ public class MainMenuController {
             createNewOrder();
 
             FXMLLoader fxmlLoader;
-            FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("ViewOrders.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -109,7 +106,6 @@ public class MainMenuController {
     public void handleClickViewStoreOrders(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader;
-            FXMLLoader primaryLoader;
             fxmlLoader = new FXMLLoader(getClass().getResource("ViewStoreOrders.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();

@@ -226,7 +226,7 @@ public class DonutController {
         }
 
         // confirmation alert that performs add to order based on button click
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Add To Order", ButtonType.YES, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Add To Order?", ButtonType.YES, ButtonType.CANCEL);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
@@ -238,6 +238,7 @@ public class DonutController {
                     return;
                 }
             }
+
             Stage stage = (Stage) addToOrder.getScene().getWindow();
             stage.close();
 

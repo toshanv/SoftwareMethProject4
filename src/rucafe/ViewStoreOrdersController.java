@@ -137,7 +137,7 @@ public class ViewStoreOrdersController {
         }
 
         // confirmation alert that performs export based on button click
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Export", ButtonType.YES, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Export?", ButtonType.YES, ButtonType.CANCEL);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {

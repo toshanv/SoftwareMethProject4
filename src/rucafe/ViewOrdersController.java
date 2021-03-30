@@ -63,7 +63,7 @@ public class ViewOrdersController {
         }
 
         // confirmation alert that performs order removal based on button click
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Remove", ButtonType.YES, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Your Order To Remove?", ButtonType.YES, ButtonType.CANCEL);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {

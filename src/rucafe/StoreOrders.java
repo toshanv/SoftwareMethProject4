@@ -120,7 +120,7 @@ public class StoreOrders implements Customizable {
             double total = subtotal + subtotal * Constants.SALESTAX_PERCENTAGE;
 
             String totalString = df.format(total);
-            output += "\tTotal Price: " + totalString + "\n";
+            output += "\tTotal Price: $" + totalString + "\n";
 
             // print each item in the order
             for (MenuItem item : order.getOrder()) {
