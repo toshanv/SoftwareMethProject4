@@ -7,7 +7,6 @@ package rucafe;
  * @author Christopher Nguyen
  */
 public class Donut extends MenuItem {
-    private int count;
     private DONUT_TYPE donutType;
     private String donutFlavor;
 
@@ -18,17 +17,9 @@ public class Donut extends MenuItem {
      * @param donutFlavor string of the flavor of donut wanted
      */
     public Donut(int count, DONUT_TYPE donutType, String donutFlavor) {
-        this.count = count;
+        super(count);
         this.donutType = donutType;
         this.donutFlavor = donutFlavor;
-    }
-
-    /**
-     * Getter method for the number of donuts
-     * @return number of donuts
-     */
-    public int getCount() {
-        return this.count;
     }
 
     /**
@@ -48,14 +39,6 @@ public class Donut extends MenuItem {
     }
 
     /**
-     * Setter method to set the count of donuts
-     * @param count of donuts wanted
-     */
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    /**
      * Calculates the price of the current donut object
      * @return price of the donut
      */
@@ -65,7 +48,7 @@ public class Donut extends MenuItem {
             return 0;
         }
 
-        return this.donutType.getPrice() * this.count;
+        return this.donutType.getPrice() * getCount();
     }
 
     /**
@@ -74,6 +57,6 @@ public class Donut extends MenuItem {
      */
     @Override
     public String toString() {
-        return this.getDonutFlavor() + " " + this.getDonutType().getName() + " (" + this.getCount() + ")";
+        return this.getDonutFlavor() + " " + this.getDonutType().getName() + " (" + getCount() + ")";
     }
 }

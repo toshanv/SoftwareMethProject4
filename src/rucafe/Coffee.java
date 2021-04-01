@@ -11,16 +11,16 @@ import java.util.ArrayList;
 public class Coffee extends MenuItem implements Customizable {
     private final ArrayList<ADDINS> currAddIns;
     private COFFEE_SIZE size;
-    private int count;
 
     /**
      * Coffee constructor that initialize the coffee object
      */
     public Coffee() {
+        super(0);
+
         // initialize the coffee object with no add-ins or size
         this.currAddIns = new ArrayList<ADDINS>();
         this.size = null;
-        this.count = 0;
     }
 
     /**
@@ -37,14 +37,6 @@ public class Coffee extends MenuItem implements Customizable {
      */
     public void setSize(COFFEE_SIZE size) {
         this.size = size;
-    }
-
-    /**
-     * Setter to set the count of the coffee
-     * @param count number of coffee's the user wants
-     */
-    public void setCount(int count) {
-        this.count = count;
     }
 
     /**
@@ -101,7 +93,7 @@ public class Coffee extends MenuItem implements Customizable {
         }
 
         // calculate and return the price of the coffee
-        return (this.size.getPrice() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE)) * this.count;
+        return (this.size.getPrice() + (this.currAddIns.size() * Constants.COFFEE_ADDIN_PRICE)) * getCount();
     }
 
     /**
@@ -123,6 +115,6 @@ public class Coffee extends MenuItem implements Customizable {
             addIns += this.currAddIns.get(i).getName() + "]";
         }
 
-        return "Coffee (" + this.count + ") " + this.size.getName() + " " + addIns;
+        return "Coffee (" + getCount() + ") " + this.size.getName() + " " + addIns;
     }
 }
