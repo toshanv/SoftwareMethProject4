@@ -17,6 +17,7 @@ public enum COFFEE_SIZE {
 
     /**
      * Constructor for the enum COFFEE_SIZE
+     * @param name of the coffee
      * @param price of the coffee
      */
     COFFEE_SIZE(String name, double price) {

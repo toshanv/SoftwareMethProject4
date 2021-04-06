@@ -17,6 +17,7 @@ public enum DONUT_TYPE {
 
     /**
      * Constructor for enum DONUT_TYPE
+     * @param name of the donut
      * @param price of the donut
      * @param flavors for the donut
      */

@@ -6,12 +6,13 @@ package rucafe;
  * @author Toshanraju Vysyaraju
  * @author Christopher Nguyen
  */
-abstract class MenuItem {
+public abstract class MenuItem {
     private int count;
+    abstract double itemPrice();
 
     /**
      * Constructor method to initialize the count data field for Donut and Coffee
-     * @param count
+     * @param count of the menu item
      */
     public MenuItem(int count) {
         this.count = count;
@@ -33,5 +34,4 @@ abstract class MenuItem {
         this.count = count;
     }
 
-    abstract double itemPrice();
 }
